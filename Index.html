@@ -1,258 +1,819 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UCP V5.02 | 2008 Financial Analog & Defense Lab</title>
-    <style>
-        :root {
-            --bg: #0a0a0c;
-            --panel: #16161a;
-            --accent: #00f2ff;
-            --parasite: #ff3366;
-            --text: #e0e0e0;
-            --coherent: #00ff88;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PRF-22 Gateway — Ethics Beyond Boundaries</title>
+  <meta name="description" content="Complete your PRF-22 moral foundations assessment, receive your Philosophical Profile, and carry it into The Navigator to begin your course journey." />
+  <style>
+    :root {
+      --gold: #c9a84c;
+      --teal: #0D5E57;
+      --teal2: #1a7a71;
+      --void: #060b18;
+      --deep: #0d1425;
+      --surface: #111c33;
+      --panel: #17233d;
+      --text: #f0ece4;
+      --muted: rgba(240,236,228,.65);
+      --dim: rgba(240,236,228,.38);
+      --line: rgba(255,255,255,.10);
+      --green: #60a36f;
+      --red: #cc6b5f;
+      --purple: #7c3aed;
+      --sans: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      --serif: Georgia, "Times New Roman", serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+      --radius: 16px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background:
+        radial-gradient(800px 400px at 15% -5%, rgba(13,94,87,.28), transparent 60%),
+        radial-gradient(600px 350px at 88% 8%, rgba(124,58,237,.14), transparent 60%),
+        radial-gradient(500px 400px at 50% 95%, rgba(201,168,76,.07), transparent 65%),
+        var(--void);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      padding-bottom: 56px;
+    }
+    a { color: var(--gold); }
+    button, input, textarea, select { font: inherit; }
 
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            display: flex;
-            height: 100vh;
-            overflow: hidden;
-        }
+    .shell { width: min(800px, calc(100% - 32px)); margin: 0 auto; padding: 36px 0 64px; }
 
-        /* Sidebar Styling */
-        #sidebar {
-            width: 350px;
-            background: var(--panel);
-            padding: 20px;
-            border-right: 1px solid #333;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            overflow-y: auto;
-        }
+    /* ── Header ── */
+    .app-header { text-align: center; margin-bottom: 40px; }
+    .app-eyebrow { font: 700 .72rem/1 var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+    .app-title { font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3.5rem); line-height: 1.05; letter-spacing: -.03em; margin-bottom: 14px; }
+    .app-subtitle { color: var(--muted); max-width: 580px; margin: 0 auto; line-height: 1.65; font-size: 1.02rem; }
 
-        /* Simulation Canvas */
-        #main-stage {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            position: relative;
-        }
+    /* ── Progress ── */
+    .progress-wrap { margin-bottom: 32px; }
+    .progress-track { height: 5px; background: rgba(255,255,255,.08); border-radius: 999px; overflow: hidden; margin-bottom: 8px; }
+    .progress-fill { height: 100%; background: linear-gradient(90deg, var(--teal), var(--gold)); border-radius: 999px; transition: width .4s ease; }
+    .progress-label { display: flex; justify-content: space-between; font: 600 .76rem/1 var(--mono); color: var(--dim); }
 
-        canvas {
-            border: 2px solid #333;
-            background: #000;
-            box-shadow: 0 0 30px rgba(0,0,0,0.5);
-            image-rendering: pixelated;
-        }
+    /* ── Cards ── */
+    .card { background: rgba(17,28,51,.84); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; margin-bottom: 18px; backdrop-filter: blur(8px); }
+    .card-title { font-family: var(--serif); font-size: 1.3rem; margin-bottom: 8px; }
+    .card-desc { color: var(--muted); font-size: .9rem; line-height: 1.65; }
 
-        /* UI Elements */
-        .card {
-            background: #1c1c21;
-            padding: 15px;
-            border-radius: 8px;
-            border-left: 4px solid var(--accent);
-        }
+    /* ── Phase labels ── */
+    .phase-label { font: 700 .68rem/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--teal2); margin-bottom: 6px; display: block; }
 
-        h2, h3 { color: var(--accent); margin-top: 0; }
-        
-        .narrative-box {
-            font-size: 0.9rem;
-            line-height: 1.4;
-            color: #bbb;
-            background: #000;
-            padding: 10px;
-            border: 1px dashed #444;
-            margin-bottom: 10px;
-        }
+    /* ── PRF Questions ── */
+    .prf-block { margin-bottom: 24px; }
+    .prf-q-num { font: 700 .68rem/1 var(--mono); color: var(--gold); letter-spacing: .1em; display: block; margin-bottom: 6px; }
+    .prf-q { font-size: .98rem; color: var(--text); line-height: 1.6; margin-bottom: 12px; font-weight: 500; }
+    .prf-opts { display: grid; gap: 8px; }
+    .prf-opt {
+      border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04);
+      border-radius: 12px; padding: 11px 14px; cursor: pointer;
+      color: var(--muted); font-size: .9rem; line-height: 1.45; transition: .15s ease;
+    }
+    .prf-opt:hover { border-color: rgba(13,94,87,.5); background: rgba(13,94,87,.08); color: var(--text); }
+    .prf-opt.selected { border-color: var(--teal); background: rgba(13,94,87,.18); color: var(--text); }
 
-        .metric {
-            font-family: 'Courier New', monospace;
-            font-size: 1.1rem;
-            color: var(--coherent);
-        }
+    /* ── Score bars ── */
+    .score-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 18px 0; }
+    .score-bar { background: rgba(255,255,255,.04); border: 1px solid var(--line); border-radius: 14px; padding: 13px; }
+    .score-bar-label { font: 700 .68rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--dim); margin-bottom: 6px; }
+    .score-bar-name { font-weight: 700; color: var(--text); margin-bottom: 8px; font-size: .9rem; }
+    .bar { height: 8px; background: rgba(255,255,255,.08); border-radius: 999px; overflow: hidden; }
+    .bar-fill { height: 100%; background: linear-gradient(90deg, var(--teal), var(--gold)); border-radius: 999px; transition: width .4s ease; }
+    .score-val { font: 700 .78rem/1 var(--mono); color: var(--gold); margin-top: 6px; }
 
-        .defense-active {
-            border-left: 4px solid var(--coherent) !important;
-            box-shadow: 0 0 10px rgba(0, 255, 136, 0.2);
-        }
+    /* ── Essay ── */
+    .essay-block { margin-bottom: 22px; }
+    .essay-q-num { font: 700 .68rem/1 var(--mono); color: var(--gold); letter-spacing: .1em; display: block; margin-bottom: 5px; }
+    .essay-q { font-size: .95rem; color: var(--text); line-height: 1.65; margin-bottom: 10px; font-weight: 500; }
+    textarea {
+      width: 100%; min-height: 96px; max-height: 240px; resize: vertical;
+      background: rgba(6,11,24,.62); border: 1px solid var(--line);
+      border-radius: 12px; padding: 12px 14px; color: var(--text);
+      font-size: .9rem; line-height: 1.6; outline: none; transition: border-color .15s;
+    }
+    textarea:focus { border-color: rgba(13,94,87,.55); box-shadow: 0 0 0 3px rgba(13,94,87,.12); }
+    .essay-count { font: 500 .72rem/1 var(--mono); color: var(--dim); text-align: right; margin-top: 5px; }
 
-        button {
-            background: var(--accent);
-            color: #000;
-            border: none;
-            padding: 10px;
-            font-weight: bold;
-            cursor: pointer;
-            border-radius: 4px;
-        }
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      border: 1px solid rgba(201,168,76,.4); background: rgba(201,168,76,.08);
+      color: var(--text); border-radius: 12px; padding: 11px 18px;
+      cursor: pointer; font-size: .9rem; font-weight: 600;
+      transition: .15s ease; min-height: 44px;
+    }
+    .btn:hover { background: rgba(201,168,76,.16); border-color: rgba(201,168,76,.65); transform: translateY(-1px); }
+    .btn:disabled { opacity: .4; cursor: not-allowed; transform: none; }
+    .btn.primary { background: linear-gradient(135deg, rgba(13,94,87,.95), rgba(26,122,113,.85)); border-color: rgba(255,255,255,.15); }
+    .btn.primary:hover { filter: brightness(1.1); }
+    .btn.gateway {
+      background: linear-gradient(135deg, rgba(201,168,76,.22), rgba(13,94,87,.18));
+      border-color: rgba(201,168,76,.6); font-size: 1rem; padding: 14px 22px;
+      border-radius: 14px; width: 100%; justify-content: center;
+    }
+    .btn.gateway:hover { background: linear-gradient(135deg, rgba(201,168,76,.32), rgba(13,94,87,.28)); transform: translateY(-2px); }
+    .btn.download { background: rgba(96,163,111,.12); border-color: rgba(96,163,111,.42); }
+    .btn.download:hover { background: rgba(96,163,111,.22); border-color: rgba(96,163,111,.7); }
+    .btn-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
 
-        button:hover { opacity: 0.9; }
+    /* ── Profile ── */
+    .profile-output {
+      background: linear-gradient(135deg, rgba(201,168,76,.07), rgba(13,94,87,.07));
+      border: 1px solid rgba(201,168,76,.28); border-radius: var(--radius);
+      padding: 28px; margin-top: 18px;
+    }
+    .profile-eyebrow { font: 700 .68rem/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+    .profile-foundation { font: 700 .82rem/1.4 var(--mono); color: var(--teal2); margin-bottom: 20px; }
+    .profile-body { color: var(--text); line-height: 1.85; font-size: .97rem; }
+    .profile-body p { margin-bottom: 1.2em; }
+    .profile-body p:last-child { margin-bottom: 0; }
+    .foundation-pill { display: inline-flex; align-items: center; gap: 6px; border: 1px solid rgba(13,94,87,.45); background: rgba(13,94,87,.14); color: #5fc9bf; border-radius: 999px; padding: 5px 10px; font: 700 .72rem/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; margin: 6px 0 2px; }
 
-        .slider-label { display: flex; justify-content: space-between; font-size: 0.8rem; }
-        input[type=range] { width: 100%; margin: 10px 0; }
+    /* ── Gateway section ── */
+    .gateway-section {
+      border: 1px solid rgba(201,168,76,.35);
+      background: linear-gradient(135deg, rgba(201,168,76,.10), rgba(13,94,87,.09));
+      border-radius: 20px; padding: 28px; margin-top: 20px; text-align: center;
+    }
+    .gateway-eyebrow { font: 700 .7rem/1 var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .gateway-title { font-family: var(--serif); font-size: 1.55rem; color: var(--text); margin-bottom: 10px; line-height: 1.2; }
+    .gateway-desc { color: var(--muted); font-size: .93rem; line-height: 1.65; max-width: 500px; margin: 0 auto 20px; }
 
-    </style>
+    /* ── Code display ── */
+    .code-display {
+      display: none; margin-top: 22px;
+      border: 1px solid rgba(13,94,87,.45); background: rgba(13,94,87,.09);
+      border-radius: 18px; padding: 28px; text-align: center;
+    }
+    .code-display.visible { display: block; }
+    .code-label { font: 700 .7rem/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--dim); margin-bottom: 12px; }
+    .code-chars { font: 900 3.2rem/1 var(--mono); color: var(--gold); letter-spacing: .22em; margin-bottom: 8px; }
+    .code-countdown { font: 600 .84rem/1 var(--mono); color: var(--muted); margin-bottom: 18px; }
+    .code-qr { display: block; margin: 0 auto 12px; border-radius: 10px; background: #fff; padding: 8px; }
+    .code-qr-label { font: 500 .78rem/1.4 var(--mono); color: var(--dim); margin-bottom: 16px; }
+    .code-instruction {
+      border-left: 3px solid rgba(13,94,87,.55); background: rgba(13,94,87,.06);
+      border-radius: 0 12px 12px 0; padding: 12px 16px; text-align: left;
+      color: var(--muted); font-size: .88rem; line-height: 1.6; margin: 16px 0;
+    }
+    .code-instruction strong { color: var(--text); }
+
+    /* ── Download grid ── */
+    .download-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 18px; }
+    .download-card { border: 1px solid var(--line); background: rgba(255,255,255,.04); border-radius: 14px; padding: 15px; }
+    .download-card-title { font-weight: 700; color: var(--text); margin-bottom: 5px; font-size: .9rem; }
+    .download-card-desc { color: var(--muted); font-size: .82rem; line-height: 1.5; margin-bottom: 12px; }
+
+    /* ── Notes ── */
+    .note { border-left: 3px solid rgba(201,168,76,.5); background: rgba(201,168,76,.06); border-radius: 0 12px 12px 0; padding: 12px 15px; color: var(--muted); font-size: .88rem; line-height: 1.6; margin: 14px 0; }
+    .note strong { color: var(--text); }
+    .privacy-note { border-left: 3px solid rgba(96,163,111,.45); background: rgba(96,163,111,.06); border-radius: 0 12px 12px 0; padding: 10px 14px; color: var(--muted); font-size: .84rem; line-height: 1.55; margin: 12px 0; }
+
+    /* ── Privacy section on intro ── */
+    .privacy-section { margin-top: 18px; border: 1px solid rgba(96,163,111,.30); background: rgba(96,163,111,.055); border-radius: 14px; padding: 16px 18px; }
+    .privacy-section-title { font: 700 .7rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: #60a36f; margin-bottom: 10px; }
+    .privacy-row { display: grid; grid-template-columns: 28px 1fr; gap: 10px; align-items: start; padding: 8px 0; border-top: 1px solid rgba(255,255,255,.06); color: var(--muted); font-size: .88rem; line-height: 1.55; }
+    .privacy-row:first-of-type { border-top: none; }
+    .privacy-row strong { color: var(--text); }
+    .privacy-link { color: var(--teal2); font: 600 .84rem/1 var(--sans); text-decoration: none; }
+    .privacy-link:hover { color: var(--gold); }
+
+    /* ── Loading ── */
+    .loading-state { display: none; flex-direction: column; align-items: center; gap: 16px; padding: 40px; text-align: center; }
+    .loading-state.visible { display: flex; }
+    .spinner { width: 36px; height: 36px; border: 3px solid rgba(255,255,255,.1); border-top-color: var(--gold); border-radius: 50%; animation: spin .9s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Section visibility ── */
+    .section { display: none; }
+    .section.active { display: block; }
+
+    /* ── Persistent footer ── */
+    .app-footer { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(6,11,24,.92); border-top: 1px solid var(--line); backdrop-filter: blur(10px); display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; font: 500 .74rem/1 var(--mono); color: var(--dim); z-index: 100; gap: 12px; }
+    .app-footer a { color: var(--teal2); text-decoration: none; white-space: nowrap; }
+    .app-footer a:hover { color: var(--gold); }
+
+    /* ── Privacy Modal ── */
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(6,11,24,.88); backdrop-filter: blur(6px); z-index: 200; overflow-y: auto; padding: 24px 16px; }
+    .modal-overlay.open { display: flex; align-items: flex-start; justify-content: center; }
+    .modal-box { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; width: min(680px, 100%); margin: auto; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,.5); }
+    .modal-header { padding: 22px 24px 18px; background: var(--panel); border-bottom: 1px solid var(--line); position: relative; }
+    .modal-eyebrow { font: 700 .68rem/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--teal2); margin-bottom: 6px; }
+    .modal-title { font-family: var(--serif); font-size: 1.4rem; }
+    .modal-close { position: absolute; top: 18px; right: 18px; background: rgba(255,255,255,.07); border: 1px solid var(--line); border-radius: 50%; width: 32px; height: 32px; color: var(--muted); cursor: pointer; font-size: .85rem; display: flex; align-items: center; justify-content: center; transition: .15s; }
+    .modal-close:hover { background: rgba(255,255,255,.14); color: var(--text); }
+    .modal-body { padding: 24px; max-height: 70vh; overflow-y: auto; }
+    .modal-footer { padding: 16px 24px; border-top: 1px solid var(--line); background: var(--panel); }
+    .disclosure-block { margin-bottom: 22px; padding-bottom: 22px; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .disclosure-block:last-of-type { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .disclosure-label { font: 700 .72rem/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--gold); margin-bottom: 9px; }
+    .disclosure-block p { color: var(--muted); font-size: .9rem; line-height: 1.7; }
+    .disclosure-block p + p { margin-top: 10px; }
+    .disclosure-block p strong { color: var(--text); }
+    .disclosure-block p a { color: var(--teal2); }
+    .disclosure-block code { font-family: var(--mono); font-size: .82rem; background: rgba(255,255,255,.08); border-radius: 6px; padding: 2px 6px; color: var(--text); }
+    .disclosure-block.crisis { border: 1px solid rgba(204,107,95,.4); background: rgba(204,107,95,.07); border-radius: 12px; padding: 14px 16px; }
+    .disclosure-label.crisis-label { color: #fca5a5; }
+    .disclosure-footer { margin-top: 20px; font: 500 .76rem/1.6 var(--mono); color: var(--dim); }
+
+    @media (max-width: 600px) {
+      .score-grid { grid-template-columns: 1fr; }
+      .download-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
+<div class="shell">
 
-<div id="sidebar">
-    <h2>UCP V5.02 Engine</h2>
-    
-    <div class="card" id="narrative-card">
-        <h3>Timeline: <span id="year-label">2002</span></h3>
-        <div id="narrative-text" class="narrative-box">
-            Welcome to the Constructor's Dashboard. We begin in 2002. The system is coherent.
+  <div class="app-header">
+    <div class="app-eyebrow">Ethics Beyond Boundaries · Saint Petersburg College</div>
+    <h1 class="app-title">PRF-22 Gateway</h1>
+    <p class="app-subtitle">Map your moral foundations. Receive your Philosophical Profile. Carry it into The Navigator and begin.</p>
+  </div>
+
+  <div class="progress-wrap">
+    <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+    <div class="progress-label"><span id="progress-text">Introduction</span><span id="progress-pct">0%</span></div>
+  </div>
+
+  <!-- ═══ SECTION 1: Intro ═══ -->
+  <div id="section-intro" class="section active">
+    <div class="card">
+      <span class="phase-label">Before you begin</span>
+      <h2 class="card-title">What this is — and what it is not</h2>
+      <p class="card-desc">The PRF-22 is a <strong>structured reflection prompt set, not a validated psychometric scale.</strong> It gives you a provisional map of how you tend to perceive moral situations — what you notice first, what registers as urgent, and where your perception may have characteristic blind spots. It is a beginning, not a verdict.</p>
+      <div class="note"><strong>Two parts.</strong> Six scenario questions that reveal your moral foundations weighting. Six assembly history questions about the experiences and relationships that shaped your moral perception. The more honest and specific your answers, the more the profile will feel like genuine recognition rather than a generic description.</div>
+      <div class="note"><strong>What you receive.</strong> Your Philosophical Profile — a 600–800 word portrait of your moral architecture generated from your answers. A ceremonial send button that carries your profile directly into a companion app with a single code. And two downloadable JSON files for use with different reflection platforms.</div>
+      <div class="note"><strong>Which file is yours?</strong> <strong>If you are taking a college course</strong> — use the Navigator JSON file and the "Begin with The Navigator" button when your profile is ready. That is the platform your course uses. <strong>If you are exploring on your own</strong> outside a course context, both files are available for the platform that fits your situation best — your instructor or the person who sent you here can tell you which one to use.</div>
+
+      <div class="privacy-section">
+        <div class="privacy-section-title">Privacy summary</div>
+        <div class="privacy-row"><span>🔒</span><div><strong>Your answers stay in your browser</strong> until you click Generate Profile. Nothing is transmitted before that point.</div></div>
+        <div class="privacy-row"><span>📡</span><div><strong>When you generate:</strong> your answers travel via encrypted HTTPS to a course proxy, then to Anthropic's Claude API. The same encryption standard as online banking.</div></div>
+        <div class="privacy-row"><span>🚫</span><div><strong>No data is stored on any server.</strong> The proxy does not retain your responses. Anthropic does not store API content and does not train on it.</div></div>
+        <div class="privacy-row"><span>🔄</span><div><strong>When you send to The Navigator:</strong> your profile data is held in server memory for up to 10 minutes and deleted immediately when received. It is never written to disk.</div></div>
+        <div class="privacy-row"><span>🎓</span><div><strong>Your instructor cannot see your profile or essays</strong> unless you explicitly share them.</div></div>
+        <div style="margin-top:12px;"><a href="#" onclick="openPrivacyModal();return false;" class="privacy-link">Read the full privacy disclosure →</a></div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn primary" onclick="goTo('section-prf')">Begin the assessment →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 2: PRF Scenarios ═══ -->
+  <div id="section-prf" class="section">
+    <div class="card">
+      <span class="phase-label">Part 1 of 2 — Moral Foundations</span>
+      <h2 class="card-title">Six scenarios</h2>
+      <p class="card-desc">For each situation, choose the response that most closely matches your first instinct — before you begin reasoning about it. There are no correct answers. The goal is to surface which moral considerations feel most urgent to you by default.</p>
+    </div>
+    <div id="prf-questions-container"></div>
+    <div class="card">
+      <div id="prf-score-preview" style="display:none;">
+        <span class="phase-label">Foundation pattern — provisional</span>
+        <div class="score-grid" id="score-bars"></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn primary" id="prf-next-btn" onclick="goTo('section-essays')" disabled>Continue to Assembly History →</button>
+        <button class="btn" onclick="goTo('section-intro')">← Back</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 3: Assembly History ═══ -->
+  <div id="section-essays" class="section">
+    <div class="card">
+      <span class="phase-label">Part 2 of 2 — Assembly History</span>
+      <h2 class="card-title">Six questions about your formation</h2>
+      <p class="card-desc">Your moral perception was not chosen — it was assembled through your specific biography. These questions ask you to look at that assembly. Answer at least four to generate your profile. Specificity matters more than polish.</p>
+    </div>
+    <div class="card" id="essays-container"></div>
+    <div class="card">
+      <div class="privacy-note">When you click Generate Profile, your foundation scores and essay responses are sent via encrypted HTTPS to generate your profile text. This is the only transmission. The profile is returned to your browser.</div>
+      <div class="btn-row">
+        <button class="btn primary" id="generate-btn" onclick="generateProfile()" disabled>Generate My Philosophical Profile →</button>
+        <button class="btn" onclick="goTo('section-prf')">← Back</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 4: Profile + Gateway ═══ -->
+  <div id="section-profile" class="section">
+
+    <!-- Loading -->
+    <div class="loading-state" id="loading-state">
+      <div class="spinner"></div>
+      <div style="color:var(--muted);font-size:.9rem;">Generating your Philosophical Profile — about 20 seconds…</div>
+    </div>
+
+    <!-- Result -->
+    <div id="profile-result" style="display:none;">
+
+      <!-- Profile text -->
+      <div class="card">
+        <span class="phase-label">Your Philosophical Profile</span>
+        <div class="foundation-pill" id="foundation-pill"></div>
+        <div class="profile-output">
+          <div class="profile-eyebrow">PRF-22 · Ethics Beyond Boundaries · Saint Petersburg College</div>
+          <div class="profile-foundation" id="profile-foundation-label"></div>
+          <div class="profile-body" id="profile-body"></div>
         </div>
-        <button onclick="nextStep()">Advance Timeline →</button>
-    </div>
+      </div>
 
-    <div class="card">
-        <h3>Constructor Controls</h3>
-        <div class="slider-label"><span>Leverage Cycle (Farmer)</span><span id="lev-val">1.0x</span></div>
-        <input type="range" id="leverage" min="1" max="40" value="1" step="0.1">
+      <!-- Foundation scores -->
+      <div class="card">
+        <span class="phase-label">Your Foundation Scores</span>
+        <div class="score-grid" id="final-score-bars"></div>
+      </div>
 
-        <div class="slider-label"><span>Disclosure Transparency</span><span id="trans-val">100%</span></div>
-        <input type="range" id="transparency" min="0" max="100" value="100">
-    </div>
+      <!-- ── Gateway Section ── -->
+      <div class="gateway-section">
+        <div class="gateway-eyebrow">Your next step</div>
+        <h2 class="gateway-title">Carry your profile into The Navigator</h2>
+        <p class="gateway-desc">Your Philosophical Profile is ready. Send it directly to The Navigator with one click — your Twin will begin knowing who you are before your first conversation.</p>
 
-    <div class="card" id="defense-card">
-        <h3>p-adic Defense Mechanism</h3>
-        <label>
-            <input type="checkbox" id="defense-toggle"> Activate p-adic Invariant Check
-        </label>
-        <p style="font-size: 0.75rem; color: #888; margin-top:5px;">
-            Prevents state transitions where |x|ₚ exceeds the integrity floor.
-        </p>
-    </div>
+        <button class="btn gateway" id="gateway-btn" onclick="gatewaySend()">
+          Begin with The Navigator →
+        </button>
 
-    <div class="card">
-        <h3>Live Metrics</h3>
-        <div class="metric">AMC Coherence: <span id="coherence-score">1.000</span></div>
-        <div class="metric" style="color:var(--parasite)">Parasite Load: <span id="parasite-score">0.00</span></div>
-    </div>
+        <!-- Code display (shown after send) -->
+        <div class="code-display" id="gateway-code-display">
+          <div class="code-label">Enter this code in The Navigator → Memory → Sync Between Devices</div>
+          <div class="code-chars" id="gateway-code-chars"></div>
+          <div class="code-countdown" id="gateway-countdown"></div>
+          <img id="gateway-qr" class="code-qr" width="160" height="160" alt="QR code for Navigator sync" />
+          <div class="code-qr-label">Or scan this QR code on your phone to open The Navigator with your profile pre-loaded</div>
+          <div class="code-instruction">
+            <strong>On your laptop or desktop:</strong> Open The Navigator, go to the Memory workspace, find "Sync Between Devices," choose Receive, and enter the code above.<br><br>
+            <strong>On your phone:</strong> Scan the QR code — it will open The Navigator directly in the Receive flow with your code pre-filled.
+          </div>
+          <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px;">
+            <a href="https://rmertzman-tech.github.io/SPC-Navigator/" target="_blank" class="btn primary" style="text-decoration:none;">Open The Navigator ↗</a>
+            <button class="btn" onclick="gatewayCancel()">Cancel transfer</button>
+          </div>
+        </div>
+
+        <div style="margin-top:16px;color:var(--dim);font:500 .8rem/1.5 var(--mono);">
+          The code is valid for 10 minutes. Your profile is deleted from the server the moment The Navigator receives it.
+        </div>
+      </div>
+
+      <!-- Downloads (secondary — archival copies) -->
+      <div class="card" style="margin-top:18px;">
+        <span class="phase-label">Keep archival copies</span>
+        <h2 class="card-title" style="font-size:1.1rem;">Download your files</h2>
+        <p class="card-desc">Download these for safekeeping — you can re-import them into either app at any time, or use the Examined file to start a session in The Examined after the course.</p>
+        <div class="download-grid">
+          <div class="download-card">
+            <div class="download-card-title">The Navigator</div>
+            <div class="download-card-desc">Import via Memory workspace → PRF-22 / E-Twin Profile → Import PRF-22 JSON. Use this if the sync code expires.</div>
+            <button class="btn download" onclick="downloadNavigatorJSON()">⬇ Navigator JSON</button>
+          </div>
+          <div class="download-card">
+            <div class="download-card-title">The Examined</div>
+            <div class="download-card-desc">Import via the About tab → Restore Twin. Use this for independent exploration after the course.</div>
+            <button class="btn download" onclick="downloadExaminedJSON()">⬇ Examined JSON</button>
+          </div>
+        </div>
+        <div class="btn-row" style="margin-top:16px;">
+          <button class="btn download" onclick="downloadProfileTXT()">⬇ Profile as text</button>
+          <button class="btn" onclick="startOver()">Start over</button>
+        </div>
+        <div class="privacy-note" style="margin-top:14px;"><strong>Reminder:</strong> These files contain personal reflection data. Do not submit them directly as Canvas assignments — use the Maturity Snapshot in The Navigator for course checkpoints.</div>
+      </div>
+
+    </div><!-- /profile-result -->
+  </div><!-- /section-profile -->
+
+</div><!-- /shell -->
+
+<!-- Persistent footer -->
+<div class="app-footer">
+  <span>PRF-22 Gateway · Ethics Beyond Boundaries · Saint Petersburg College</span>
+  <a href="#" onclick="openPrivacyModal();return false;">Privacy &amp; Data Disclosure</a>
 </div>
 
-<div id="main-stage">
-    <div style="margin-bottom: 10px; text-align: center;">
-        <h1 style="margin:0; color:var(--accent);">HOLOGRAPHIC COHERENCE MAP</h1>
-        <small>Bright = Functional Commonwealth | Dark = Foreclosure Ripples (Entropy)</small>
+<!-- Privacy Modal -->
+<div id="privacy-modal" class="modal-overlay" onclick="closePrivacyIfBackground(event)">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-label="Privacy and Data Disclosure">
+    <div class="modal-header">
+      <div class="modal-eyebrow">PRF-22 Gateway</div>
+      <h2 class="modal-title">Privacy &amp; Data Disclosure</h2>
+      <button class="modal-close" onclick="closePrivacyModal()" aria-label="Close">✕</button>
     </div>
-    <canvas id="amcCanvas" width="600" height="600"></canvas>
+    <div class="modal-body">
+      <div class="disclosure-block">
+        <div class="disclosure-label">What this tool is</div>
+        <p>The PRF-22 Gateway is an educational reflection tool for the Ethics Beyond Boundaries course at Saint Petersburg College. It is <strong>not</strong> a mental health service, psychological assessment, clinical instrument, or substitute for counseling. The PRF-22 is a structured reflection prompt set, not a validated psychometric scale. Results are provisional and are intended to open inquiry, not to label or define you.</p>
+      </div>
+      <div class="disclosure-block">
+        <div class="disclosure-label">What stays in your browser</div>
+        <p>Your scenario answers and essay responses are stored only in your browser's memory while you use the app. <strong>Nothing is sent to any server before you click Generate Profile.</strong> If you close the tab before generating, your answers are not saved anywhere.</p>
+      </div>
+      <div class="disclosure-block">
+        <div class="disclosure-label">What is transmitted when you generate your profile</div>
+        <p>When you click Generate Profile, your six scenario answers and six essay responses travel via an <strong>encrypted HTTPS/TLS connection</strong> to a course proxy server on Render.com, operated for this course. The proxy forwards your request to <strong>Anthropic's Claude API</strong>, which generates your profile text and returns it to your browser.</p>
+        <p><strong>No copy of your essay responses or generated profile is retained on the proxy server or by Anthropic.</strong> This is a one-time transmission at the moment of generation.</p>
+      </div>
+      <div class="disclosure-block">
+        <div class="disclosure-label">What is transmitted when you send to The Navigator</div>
+        <p>When you click "Begin with The Navigator," your PRF-22 profile data is sent via HTTPS to the course relay endpoint on Render.com. It is held in server memory only — <strong>never written to disk</strong> — for up to 10 minutes, then deleted whether or not it is received. The moment The Navigator retrieves it with your code, it is deleted immediately from server memory. The code can only be used once.</p>
+      </div>
+      <div class="disclosure-block">
+        <div class="disclosure-label">AI training — what Anthropic does and does not do</div>
+        <p><strong>Anthropic does not use API data to train its models.</strong> Your essay responses and generated profile are not used for model training, improvement, or retention by Anthropic. See <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">anthropic.com/privacy</a>.</p>
+      </div>
+      <div class="disclosure-block">
+        <div class="disclosure-label">Your instructor and Saint Petersburg College</div>
+        <p>Your instructor <strong>cannot see your PRF-22 answers, essay responses, or generated profile</strong> through this app. Nothing is reported to SPC, Canvas, or any institutional system. If you share your profile as part of a course activity, that sharing is your choice and is initiated by you.</p>
+      </div>
+      <div class="disclosure-block">
+        <div class="disclosure-label">What to write — and what not to write</div>
+        <p>Write only what you are comfortable transmitting to a third-party AI service. You do not need to include identifying information. The more specific your answers, the more precise your profile — but you remain in control of what you share.</p>
+      </div>
+      <div class="disclosure-block crisis">
+        <div class="disclosure-label crisis-label">If you are in crisis</div>
+        <p>If you are experiencing thoughts of harming yourself or others, please <strong>call or text 988</strong> (Suicide &amp; Crisis Lifeline, 24/7 in the US) or contact a mental health professional immediately. This app cannot provide crisis support.</p>
+      </div>
+      <div class="disclosure-block">
+        <div class="disclosure-label">Voluntary participation</div>
+        <p>Completing the PRF-22 is a course activity, but what you write is your own. You are not required to share your profile or JSON files unless your instructor explicitly asks and you choose to participate.</p>
+      </div>
+      <div class="disclosure-footer">Ethics Beyond Boundaries · Saint Petersburg College · 2026<br>Questions: contact your course instructor.</div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn primary" onclick="closePrivacyModal()">I understand — close this</button>
+    </div>
+  </div>
 </div>
 
 <script>
-    const canvas = document.getElementById('amcCanvas');
-    const ctx = canvas.getContext('2d');
-    const gridSize = 60;
-    const cellSize = 10;
-    
-    // Agent Grid: 1.0 is healthy, 0.0 is foreclosed
-    let grid = Array(gridSize).fill().map(() => Array(gridSize).fill(1.0));
-    let step = 0;
+'use strict';
 
-    const timeline = [
-        { year: 2002, lev: 1, trans: 95, text: "2002-2004: Post-dotcom stability. Interest rates are low. Institutional agents begin seeking higher yield CIBs through subprime housing assets." },
-        { year: 2005, lev: 15, trans: 70, text: "2005-2006: The 'Leverage Cycle' accelerates. CDOs are created with Limited Disclosure. Note the minor Parasite Signatures appearing as localized incoherence." },
-        { year: 2007, lev: 32, trans: 30, text: "2007: Saturation. The system is highly leveraged. Regulatory Sync is complete. One small 'Incoherence Spike' could now trigger a holographic collapse." },
-        { year: 2008, lev: 40, trans: 5, text: "2008: CRASH. Lehman Brothers fails. Foreclosure ripples cascade through the 'Millions of People' (Retail Nodes). The Commonwealth fractures." }
-    ];
+var BACKEND = 'https://ucp-backend-4dig.onrender.com';
+var NAVIGATOR_URL = 'https://rmertzman-tech.github.io/SPC-Navigator/';
 
-    function nextStep() {
-        if (step < timeline.length - 1) {
-            step++;
-            const s = timeline[step];
-            document.getElementById('year-label').innerText = s.year;
-            document.getElementById('narrative-text').innerText = s.text;
-            document.getElementById('leverage').value = s.lev;
-            document.getElementById('transparency').value = s.trans;
-            
-            if(s.year === 2008) triggerIncoherenceSpikes(12);
-        } else {
-            alert("Simulation Complete. Analyze the 'Nothing for the Millions' outcome.");
-        }
+// ── PRF Data ─────────────────────────────────────────────────────────────────
+var PRF_Q = [
+  {q:'A community discovers that a long-admired leader secretly exploited others for personal gain. What matters most now?',
+   opts:['The harm caused to those exploited must be addressed first','The community\u2019s trust and future stability','Whether the leader acknowledges wrongdoing and seeks forgiveness','The rules and obligations that were violated']},
+  {q:'Two colleagues disagree about handling a sensitive patient situation. One follows protocol strictly; the other bends the rules to be more helpful. Who is more ethical?',
+   opts:['The one who prevented more harm, regardless of method','The one who followed the established protocol','The one whose team would back their decision','The one whose conscience is clear']},
+  {q:'Your organization asks you to do something legal but that conflicts with your personal values. You need the job. What do you do?',
+   opts:['Refuse if it harms others directly','Comply while documenting your objection','Consult your colleagues before deciding','Look for another position quietly']},
+  {q:'A person succeeds dramatically through hard work but also through circumstances they did not choose. How much credit do they deserve?',
+   opts:['Significant credit for their choices and effort','Full credit \u2014 they used what they had','Partial credit, shared with the circumstances','Credit must be judged by the community']},
+  {q:'You learn that a beloved local institution has been quietly engaging in harmful practices. What is your first instinct?',
+   opts:['Report it to protect potential victims','Speak privately to leadership first','Bring it to the community before going public','Research thoroughly before acting']},
+  {q:'A visitor violates a local tradition that locals find sacred but that causes no direct harm. Should they be corrected?',
+   opts:['Only if asked \u2014 no harm, no obligation','Yes \u2014 respecting local customs matters','Yes, but gently \u2014 they are a guest','It depends on the tradition\u2019s importance to the community']},
+];
+var PRF_WEIGHTS = [
+  [[2,0,0,1],[1,1,0,1],[0,1,2,0],[0,1,0,2]],
+  [[2,0,0,0],[0,0,2,1],[1,1,0,1],[0,2,1,0]],
+  [[2,1,0,0],[0,0,1,2],[1,1,1,0],[0,0,2,1]],
+  [[1,2,0,0],[0,1,0,1],[1,0,1,1],[0,0,2,1]],
+  [[2,0,1,0],[0,0,2,1],[1,1,0,1],[0,2,0,1]],
+  [[1,1,0,0],[0,0,1,2],[1,1,1,0],[0,2,0,1]],
+];
+var PRF_KEYS  = ['care','fair','auth','loyal'];
+var PRF_NAMES = {care:'Care & Fairness', fair:'Fairness & Justice', loyal:'Loyalty & Community', auth:'Authority & Stability'};
+var PRF_COLORS = {care:'#4A90A4', fair:'#6B8E4E', loyal:'#D4A574', auth:'#8B7BA8'};
+var PRF_DESC = {
+  care:'You notice harm and vulnerability before most other moral considerations. When you encounter a moral situation, the suffering of specific people registers first — before rules, group loyalty, or hierarchy.',
+  fair:'You notice procedural consistency and equal treatment before most other moral considerations. Fairness, proportionality, and whether rules apply equally tend to register first.',
+  loyal:'You notice threats to community coherence and trust before most other moral considerations. Who owes what to whom, and whether the group can hold together, tend to register first.',
+  auth:'You notice whether legitimate structure is being respected or undermined before most other moral considerations. Proper authority, institutional integrity, and role obligation tend to register first.'
+};
+
+var ASM_Q = [
+  {n:'1', q:'What is the earliest moment you can recall when something felt genuinely wrong \u2014 not just wrong to you personally, but wrong in a way that seemed to matter beyond yourself? Describe the situation and what you noticed.'},
+  {n:'2', q:'Describe someone from your early life whose way of moving through the world you found yourself watching and absorbing. What specifically did they do that you noticed and stored?'},
+  {n:'3', q:'What is something you believe deeply that you have never been able to fully explain to someone who starts from a different premise? What makes that belief feel self-evident to you even when it is not to others?'},
+  {n:'4', q:'Describe the institution you spend the most time in right now. What fraction of your energy there actually reaches its stated purpose, and what fraction is consumed by the institution\u2019s own maintenance?'},
+  {n:'5', q:'What is the gap, if any, between the person you are when you are at your most coherent and clear, and the person you are on an ordinary difficult day? What produces that gap?'},
+  {n:'6', q:'Think about a version of yourself from a few years ago \u2014 or the earliest time you can clearly remember having a sense of who you were. What has remained most stable about you since then? And what has already shifted in ways that surprised you?'},
+];
+
+// ── App State ─────────────────────────────────────────────────────────────────
+var state = { prfAnswers:{}, prfScores:{care:0,fair:0,auth:0,loyal:0}, asmAnswers:{}, profile:'', primary:'', generatedAt:'' };
+
+// ── Gateway State ─────────────────────────────────────────────────────────────
+var gatewayState = { activeCode: null, countdownInterval: null, expiresAt: null };
+
+// ── Navigation ────────────────────────────────────────────────────────────────
+var SECTIONS = ['section-intro','section-prf','section-essays','section-profile'];
+var LABELS   = ['Introduction','Moral Foundations','Assembly History','Your Profile'];
+
+function goTo(id) {
+  SECTIONS.forEach(function(s){ document.getElementById(s).classList.remove('active'); });
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+  var idx = SECTIONS.indexOf(id);
+  var pct = Math.round((idx / (SECTIONS.length-1)) * 100);
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-text').textContent = LABELS[idx] || '';
+  document.getElementById('progress-pct').textContent = pct + '%';
+}
+
+// ── PRF ───────────────────────────────────────────────────────────────────────
+function buildPRF() {
+  var c = document.getElementById('prf-questions-container'); c.innerHTML = '';
+  PRF_Q.forEach(function(q, qi) {
+    var block = document.createElement('div');
+    block.className = 'card prf-block';
+    var opts = q.opts.map(function(opt, oi) {
+      var sel = state.prfAnswers[qi] === oi ? ' selected' : '';
+      return '<div class="prf-opt'+sel+'" onclick="selectPRF('+qi+','+oi+',this)">'+esc(opt)+'</div>';
+    }).join('');
+    block.innerHTML = '<span class="prf-q-num">Question '+(qi+1)+' of '+PRF_Q.length+'</span>'
+      +'<div class="prf-q">'+esc(q.q)+'</div><div class="prf-opts">'+opts+'</div>';
+    c.appendChild(block);
+  });
+}
+
+function selectPRF(qi, oi, el) {
+  el.closest('.prf-block').querySelectorAll('.prf-opt').forEach(function(o){ o.classList.remove('selected'); });
+  el.classList.add('selected');
+  state.prfAnswers[qi] = oi;
+  recalcScores();
+  updateScoreBars('score-bars', true);
+  var answered = Object.keys(state.prfAnswers).length;
+  document.getElementById('prf-next-btn').disabled = answered < PRF_Q.length;
+  document.getElementById('prf-score-preview').style.display = answered > 0 ? 'block' : 'none';
+}
+
+function recalcScores() {
+  var s = {care:0, fair:0, auth:0, loyal:0};
+  Object.keys(state.prfAnswers).forEach(function(qi) {
+    var oi = state.prfAnswers[qi];
+    var w = PRF_WEIGHTS[qi] && PRF_WEIGHTS[qi][oi] ? PRF_WEIGHTS[qi][oi] : [0,0,0,0];
+    PRF_KEYS.forEach(function(k,i){ s[k] = (s[k]||0) + (w[i]||0); });
+  });
+  state.prfScores = s;
+  state.primary = PRF_KEYS.slice().sort(function(a,b){ return (s[b]||0)-(s[a]||0); })[0];
+}
+
+function updateScoreBars(id, provisional) {
+  var el = document.getElementById(id); if (!el) return;
+  var s = state.prfScores;
+  var max = Math.max.apply(null, PRF_KEYS.map(function(k){ return s[k]||0; })) || 1;
+  el.innerHTML = PRF_KEYS.map(function(k) {
+    var pct = Math.round(((s[k]||0)/max)*100);
+    var isPrimary = k === state.primary;
+    return '<div class="score-bar">'
+      +'<div class="score-bar-label">'+(isPrimary?'★ Primary':'Foundation')+'</div>'
+      +'<div class="score-bar-name">'+esc(PRF_NAMES[k])+'</div>'
+      +'<div class="bar"><div class="bar-fill" style="width:'+pct+'%;background:'+(isPrimary?'linear-gradient(90deg,'+PRF_COLORS[k]+',var(--gold))':'rgba(255,255,255,.25)')+'"></div></div>'
+      +'<div class="score-val">'+(s[k]||0)+' pts'+(provisional?' (provisional)':'')+'</div></div>';
+  }).join('');
+}
+
+// ── Essays ────────────────────────────────────────────────────────────────────
+function buildEssays() {
+  var c = document.getElementById('essays-container'); c.innerHTML = '';
+  ASM_Q.forEach(function(q) {
+    var block = document.createElement('div');
+    block.className = 'essay-block';
+    var saved = state.asmAnswers[q.n] || '';
+    block.innerHTML = '<span class="essay-q-num">Assembly History '+q.n+'</span>'
+      +'<div class="essay-q">'+esc(q.q)+'</div>'
+      +'<textarea id="asm-'+q.n+'" placeholder="Write here — a few sentences or much more. Honesty matters more than polish." oninput="checkEssayProgress()">'+esc(saved)+'</textarea>'
+      +'<div class="essay-count" id="asm-count-'+q.n+'">'+saved.length+' characters</div>';
+    c.appendChild(block);
+  });
+  checkEssayProgress();
+}
+
+function checkEssayProgress() {
+  var filled = 0;
+  ASM_Q.forEach(function(q) {
+    var el = document.getElementById('asm-'+q.n); if (!el) return;
+    state.asmAnswers[q.n] = el.value;
+    var cnt = document.getElementById('asm-count-'+q.n);
+    if (cnt) cnt.textContent = el.value.length + ' characters';
+    if (el.value.trim().length > 20) filled++;
+  });
+  document.getElementById('generate-btn').disabled = filled < 4;
+}
+
+// ── Profile Generation ────────────────────────────────────────────────────────
+async function generateProfile() {
+  ASM_Q.forEach(function(q){ var el=document.getElementById('asm-'+q.n); if(el) state.asmAnswers[q.n]=el.value; });
+  goTo('section-profile');
+  document.getElementById('loading-state').classList.add('visible');
+  document.getElementById('profile-result').style.display = 'none';
+
+  var s = state.prfScores, primary = state.primary;
+  var sys = 'You are generating a personal philosophical profile for a person who has completed a moral framework assessment and answered six assembly history questions. Your task is to write a profile that feels like genuine recognition \u2014 like the person is reading a description of themselves that is more precise and personal than they usually receive.\n\nPRF scores: Care='+s.care+', Fairness='+s.fair+', Loyalty='+s.loyal+', Authority='+s.auth+'\nPrimary moral foundation: '+PRF_NAMES[primary]+'\n\nWrite exactly 5 paragraphs (600\u2013800 words total) that:\n1. Describe specifically how this person tends to perceive moral situations \u2014 what they notice first, what registers as urgent before anything else does\n2. Describe their characteristic strengths as a moral agent given this specific framework\n3. Name the specific blind spots or tensions their framework creates \u2014 what they tend to miss, misread, or find genuinely difficult\n4. Weave in themes from their assembly history responses without quoting them directly \u2014 notice patterns, connections, and tensions across the six answers that the person may not have noticed themselves\n5. End with a question this person has probably been living with for years without quite being able to articulate it\n\n6. Add a final short paragraph (80\u2013100 words) that names the specific philosophical extension question this framework opens. Do not moralize. Describe what the examined life, for someone with this specific moral architecture, makes it necessary to eventually examine. For a Care-dominant person: whose suffering registers and whose does not. For a Fairness-dominant person: whether the rules they apply equally are themselves fair to those who did not make them. For a Loyalty-dominant person: what obligations remain to those outside the primary circle. For an Authority-dominant person: whether the structures they respect protect or exclude those with less access. Name this question as genuinely theirs.\n\nStyle: Use second person (you, your). Be personal and precise, not clinical or generic. The goal is recognition, not analysis.';
+  var userContent = 'Assembly history responses:\n\n'+ASM_Q.map(function(q){ return 'Q: '+q.q+'\nA: '+(state.asmAnswers[q.n]||'(not answered)'); }).join('\n\n');
+
+  try {
+    var res = await fetch(BACKEND+'/api/claude-proxy', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ model:'claude-sonnet-4-6', max_tokens:1400, system:sys, messages:[{role:'user',content:userContent}] })
+    });
+    var data = await res.json();
+    var text = '';
+    if (data.content && Array.isArray(data.content)) data.content.forEach(function(b){ if(b.type==='text') text+=b.text; });
+    else if (data.response) text = data.response;
+    if (!text) throw new Error('Empty response');
+    state.profile = text.trim();
+    state.generatedAt = new Date().toISOString();
+    renderProfileResult();
+  } catch(e) {
+    document.getElementById('loading-state').classList.remove('visible');
+    document.getElementById('profile-result').style.display = 'block';
+    document.getElementById('profile-body').innerHTML = '<div style="color:#fca5a5;border:1px solid rgba(204,107,95,.4);border-radius:12px;padding:14px;line-height:1.6;">Could not generate profile: '+esc(e.message)+'<br><br>Please check your connection and try again. Your answers are preserved.</div>';
+    document.getElementById('profile-title') && (document.getElementById('profile-title').textContent = 'Profile generation failed');
+    document.getElementById('foundation-pill').textContent = '';
+    document.getElementById('profile-foundation-label').textContent = '';
+  }
+}
+
+function renderProfileResult() {
+  document.getElementById('loading-state').classList.remove('visible');
+  document.getElementById('profile-result').style.display = 'block';
+  var primary = state.primary;
+  var name = PRF_NAMES[primary] || 'Mixed Foundation';
+  document.getElementById('foundation-pill').textContent = 'Primary: ' + name;
+  document.getElementById('profile-foundation-label').textContent = 'Primary moral foundation: ' + name;
+  var paras = state.profile.split('\n\n').filter(Boolean).map(function(p){ return '<p>'+esc(p.trim())+'</p>'; }).join('');
+  document.getElementById('profile-body').innerHTML = paras;
+  updateScoreBars('final-score-bars', false);
+}
+
+// ── Gateway Send ──────────────────────────────────────────────────────────────
+async function gatewaySend() {
+  var btn = document.getElementById('gateway-btn');
+  if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+  try {
+    var payload = buildNavigatorJSON();
+    var res = await fetch(BACKEND+'/api/sync/push', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ data: payload, label: 'PRF-22 Philosophical Profile — ' + (PRF_NAMES[state.primary]||'Mixed') })
+    });
+    var json = await res.json();
+    if (!res.ok || !json.code) throw new Error(json.error || 'Transfer failed');
+    gatewayState.activeCode = json.code;
+    gatewayState.expiresAt = Date.now() + (json.expires_in * 1000);
+    showGatewayCode(json.code);
+    if (btn) { btn.textContent = 'Resend'; btn.disabled = false; }
+  } catch(e) {
+    if (btn) { btn.disabled = false; btn.textContent = 'Begin with The Navigator →'; }
+    alert('Could not start transfer: ' + e.message + '\n\nPlease check your connection and try again.');
+  }
+}
+window.gatewaySend = gatewaySend;
+
+function showGatewayCode(code) {
+  var display = document.getElementById('gateway-code-display');
+  var codeEl  = document.getElementById('gateway-code-chars');
+  if (display) display.classList.add('visible');
+  if (codeEl)  codeEl.textContent = code;
+  gatewayStartCountdown();
+  drawGatewayQR(code);
+}
+
+function gatewayStartCountdown() {
+  clearInterval(gatewayState.countdownInterval);
+  gatewayState.countdownInterval = setInterval(function() {
+    var remaining = Math.max(0, Math.round((gatewayState.expiresAt - Date.now()) / 1000));
+    var el = document.getElementById('gateway-countdown');
+    if (el) {
+      var mins = Math.floor(remaining/60), secs = remaining%60;
+      el.textContent = 'Code expires in ' + mins + ':' + String(secs).padStart(2,'0');
+      el.style.color = remaining < 60 ? 'rgba(204,107,95,.9)' : 'var(--muted)';
     }
-
-    function triggerIncoherenceSpikes(count) {
-        for(let i=0; i<count; i++) {
-            let rx = Math.floor(Math.random() * gridSize);
-            let ry = Math.floor(Math.random() * gridSize);
-            grid[ry][rx] = 0.1; 
-        }
+    if (remaining === 0) {
+      clearInterval(gatewayState.countdownInterval);
+      var display = document.getElementById('gateway-code-display');
+      if (display) display.classList.remove('visible');
+      var btn = document.getElementById('gateway-btn');
+      if (btn) { btn.disabled = false; btn.textContent = 'Begin with The Navigator →'; }
+      gatewayState.activeCode = null;
     }
+  }, 1000);
+}
 
-    function draw() {
-        ctx.clearRect(0,0,600,600);
-        let currentCoherence = 0;
-        let totalParasite = 0;
+async function gatewayCancel() {
+  clearInterval(gatewayState.countdownInterval);
+  var code = gatewayState.activeCode;
+  gatewayState.activeCode = null;
+  var display = document.getElementById('gateway-code-display');
+  if (display) display.classList.remove('visible');
+  var btn = document.getElementById('gateway-btn');
+  if (btn) { btn.disabled = false; btn.textContent = 'Begin with The Navigator →'; }
+  if (code) {
+    try { await fetch(BACKEND+'/api/sync/cancel', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({code:code}) }); } catch(e) {}
+  }
+}
+window.gatewayCancel = gatewayCancel;
 
-        const lev = parseFloat(document.getElementById('leverage').value);
-        const trans = parseFloat(document.getElementById('transparency').value) / 100;
-        const defenseOn = document.getElementById('defense-toggle').checked;
+function drawGatewayQR(code) {
+  var img = document.getElementById('gateway-qr');
+  if (!img) return;
+  // QR encodes a URL that opens Navigator with the sync code pre-filled in the hash
+  var url = NAVIGATOR_URL + '#sync=' + code;
+  img.src = 'https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=' + encodeURIComponent(url);
+  img.onerror = function() { img.style.display = 'none'; };
+}
 
-        document.getElementById('lev-val').innerText = lev.toFixed(1) + "x";
-        document.getElementById('trans-val').innerText = (trans*100).toFixed(0) + "%";
-        document.getElementById('defense-card').className = defenseOn ? "card defense-active" : "card";
+// ── JSON Builders ─────────────────────────────────────────────────────────────
+function normalizePrfScore(raw) { return Math.min(100, Math.round((raw/12)*100)); }
 
-        // p-adic Defense Logic: |x|p 
-        // If leverage is too high relative to transparency, p-adic check blocks extraction
-        const p = 5;
-        const padicDist = Math.pow(p, -Math.floor(Math.log(lev + 0.1) / Math.log(p)));
-        const blockedByDefense = defenseOn && (padicDist < 0.2 || trans < 0.4);
+function buildNavigatorJSON() {
+  var s = state.prfScores, primary = state.primary;
+  var ranked = PRF_KEYS.slice().sort(function(a,b){ return (s[b]||0)-(s[a]||0); })
+    .map(function(k){ return {key:k, label:PRF_NAMES[k], value:normalizePrfScore(s[k]||0)}; });
+  var growthTargets = {
+    care:'Practice recognizing obligations that exist beyond the sphere of immediate relationships and felt suffering.',
+    fair:'Practice attending to whether the rules you apply equally are themselves fair to people who had less say in making them.',
+    loyal:'Practice identifying what moral obligations remain to people outside your primary circles of affiliation.',
+    auth:'Practice examining whether the authority structures you respect protect or exclude those with less access to them.'
+  };
+  var asmSummary = ASM_Q.map(function(q){ var a=state.asmAnswers[q.n]||''; return 'Q'+q.n+': '+(a.length>180?a.substring(0,180)+'...':a); }).filter(function(s){ return s.length>5; }).join(' | ');
+  return {
+    source:'PRF-22', profileType:'E-Twin Profile',
+    generatedAt: state.generatedAt || new Date().toISOString(),
+    version:'prf22-gateway-v1', includeInTwin:true,
+    foundations:{care:normalizePrfScore(s.care||0), fairness:normalizePrfScore(s.fair||0), loyalty:normalizePrfScore(s.loyal||0), authority:normalizePrfScore(s.auth||0)},
+    foundationsRanked:ranked,
+    reasoningStyle:{styleLabel:'Determined through scenario responses — see foundationsRanked', logicalIntuitiveRatio:60},
+    atcf:{identityStability:65, metacognitiveFlexibility:70, stressResilience:60},
+    trust:{trustBaseline:58, institutionalTrust:50},
+    orientation:{selfExpressionSurvival:60},
+    growthTarget: growthTargets[primary]||'',
+    questionsForTwin:[
+      'Where did '+PRF_NAMES[primary]+' become most important in your life?',
+      'When does your primary foundation help you see what others miss?',
+      'What is one situation where your dominant moral tendency led you somewhere you later questioned?',
+      'What would it take for you to seriously revise your strongest moral conviction?',
+      'Where do you feel the gap between who you are at your clearest and who you are under ordinary pressure?'
+    ],
+    summary:'PRF-22 profile: primary foundation is '+PRF_NAMES[primary]+'. '+(PRF_DESC[primary]||'')+' Assembly history themes: '+asmSummary.substring(0,400)+'. Treat as a starting map, not a verdict.',
+    philosophicalProfile: state.profile,
+    assemblyHistory: state.asmAnswers,
+    prfScoresRaw: s,
+    generatedBy:'EBB PRF-22 Gateway — Saint Petersburg College'
+  };
+}
 
-        let nextGrid = grid.map(row => [...row]);
+function buildExaminedJSON() {
+  var s = state.prfScores;
+  return { workspace:true, prfAnswers:state.prfAnswers, prfScores:{care:s.care||0, fair:s.fair||0, loyal:s.loyal||0, auth:s.auth||0}, asmAnswers:state.asmAnswers, profile:state.profile, archive:[], coherenceHistory:[], currentMode:'reflect', exportedFrom:'prf22-gateway', exportedAt:state.generatedAt||new Date().toISOString() };
+}
 
-        for (let y = 0; y < gridSize; y++) {
-            for (let x = 0; x < gridSize; x++) {
-                let val = grid[y][x];
+function downloadJSON(obj, filename) {
+  var blob = new Blob([JSON.stringify(obj,null,2)],{type:'application/json'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a'); a.href=url; a.download=filename;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
+}
+function downloadNavigatorJSON(){ downloadJSON(buildNavigatorJSON(),'PRF22_Navigator_'+new Date().toISOString().slice(0,10)+'.json'); }
+function downloadExaminedJSON(){ downloadJSON(buildExaminedJSON(),'PRF22_Examined_'+new Date().toISOString().slice(0,10)+'.json'); }
+function downloadProfileTXT(){
+  var s = state.prfScores, p = state.primary;
+  var text = 'PRF-22 PHILOSOPHICAL PROFILE\nEthics Beyond Boundaries · Saint Petersburg College\n'+'='.repeat(50)+'\n\nPrimary foundation: '+(PRF_NAMES[p]||'Mixed')+'\nGenerated: '+new Date().toLocaleString()+'\n\nFOUNDATION SCORES\n'+PRF_KEYS.map(function(k){ return PRF_NAMES[k]+': '+(s[k]||0)+' pts'; }).join('\n')+'\n\n'+'='.repeat(50)+'\n\n'+(state.profile||'No profile generated yet.');
+  var blob = new Blob([text],{type:'text/plain'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a'); a.href=url; a.download='PRF22_Profile_'+new Date().toISOString().slice(0,10)+'.txt';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
+}
 
-                // 1. Parasitic Decay Logic
-                if (val < 0.8 && val > 0.0) {
-                    const rippleStrength = (lev / 40) * (1 - trans);
-                    // Spread to neighbors
-                    const neighbors = [[0,1],[0,-1],[1,0],[-1,0]];
-                    neighbors.forEach(([dx, dy]) => {
-                        let nx = x + dx, ny = y + dy;
-                        if(nx >=0 && nx < gridSize && ny >=0 && ny < gridSize) {
-                            if (!blockedByDefense) {
-                                nextGrid[ny][nx] -= 0.005 * rippleStrength;
-                            } else {
-                                // Defense recovers coherence
-                                nextGrid[ny][nx] += 0.002;
-                            }
-                        }
-                    });
-                }
+function startOver() {
+  if (!confirm('Clear all your answers and start over?')) return;
+  state = {prfAnswers:{}, prfScores:{care:0,fair:0,auth:0,loyal:0}, asmAnswers:{}, profile:'', primary:'', generatedAt:''};
+  clearInterval(gatewayState.countdownInterval);
+  gatewayState = {activeCode:null, countdownInterval:null, expiresAt:null};
+  buildPRF(); buildEssays(); goTo('section-intro');
+}
 
-                nextGrid[y][x] = Math.min(1.0, Math.max(0, nextGrid[y][x]));
-                
-                // Drawing
-                ctx.fillStyle = `rgb(${val * 50}, ${val * 255}, ${val * 200})`;
-                if (val < 0.4) ctx.fillStyle = `rgb(${100 + (1-val)*155}, 20, 50)`; // Parasite/Foreclosure Red
-                
-                ctx.fillRect(x * cellSize, y * cellSize, cellSize - 1, cellSize - 1);
-                
-                currentCoherence += nextGrid[y][x];
-                if (val < 0.5) totalParasite += (1 - val);
-            }
-        }
+// ── Privacy Modal ─────────────────────────────────────────────────────────────
+function openPrivacyModal(){ document.getElementById('privacy-modal').classList.add('open'); document.body.style.overflow='hidden'; }
+function closePrivacyModal(){ document.getElementById('privacy-modal').classList.remove('open'); document.body.style.overflow=''; }
+function closePrivacyIfBackground(e){ if(e.target===document.getElementById('privacy-modal')) closePrivacyModal(); }
+document.addEventListener('keydown',function(e){ if(e.key==='Escape') closePrivacyModal(); });
+window.openPrivacyModal = openPrivacyModal;
+window.closePrivacyModal = closePrivacyModal;
 
-        grid = nextGrid;
-        document.getElementById('coherence-score').innerText = (currentCoherence / (gridSize*gridSize)).toFixed(3);
-        document.getElementById('parasite-score').innerText = (totalParasite / 100).toFixed(2);
+// ── Utilities ─────────────────────────────────────────────────────────────────
+function esc(s){ return String(s||'').replace(/[&<>'"]/g,function(c){ return{'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#039;','"':'&quot;'}[c]; }); }
 
-        requestAnimationFrame(draw);
-    }
-
-    draw();
+// ── Init ──────────────────────────────────────────────────────────────────────
+buildPRF();
+buildEssays();
+goTo('section-intro');
 </script>
 </body>
 </html>
