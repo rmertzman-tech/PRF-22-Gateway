@@ -42,30 +42,19 @@
     }
     a { color: var(--gold); }
     button, input, textarea, select { font: inherit; }
-
     .shell { width: min(800px, calc(100% - 32px)); margin: 0 auto; padding: 36px 0 64px; }
-
-    /* ── Header ── */
     .app-header { text-align: center; margin-bottom: 40px; }
     .app-eyebrow { font: 700 .72rem/1 var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
     .app-title { font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3.5rem); line-height: 1.05; letter-spacing: -.03em; margin-bottom: 14px; }
     .app-subtitle { color: var(--muted); max-width: 580px; margin: 0 auto; line-height: 1.65; font-size: 1.02rem; }
-
-    /* ── Progress ── */
     .progress-wrap { margin-bottom: 32px; }
     .progress-track { height: 5px; background: rgba(255,255,255,.08); border-radius: 999px; overflow: hidden; margin-bottom: 8px; }
     .progress-fill { height: 100%; background: linear-gradient(90deg, var(--teal), var(--gold)); border-radius: 999px; transition: width .4s ease; }
     .progress-label { display: flex; justify-content: space-between; font: 600 .76rem/1 var(--mono); color: var(--dim); }
-
-    /* ── Cards ── */
     .card { background: rgba(17,28,51,.84); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; margin-bottom: 18px; backdrop-filter: blur(8px); }
     .card-title { font-family: var(--serif); font-size: 1.3rem; margin-bottom: 8px; }
     .card-desc { color: var(--muted); font-size: .9rem; line-height: 1.65; }
-
-    /* ── Phase labels ── */
     .phase-label { font: 700 .68rem/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--teal2); margin-bottom: 6px; display: block; }
-
-    /* ── PRF Questions ── */
     .prf-block { margin-bottom: 24px; }
     .prf-q-num { font: 700 .68rem/1 var(--mono); color: var(--gold); letter-spacing: .1em; display: block; margin-bottom: 6px; }
     .prf-q { font-size: .98rem; color: var(--text); line-height: 1.6; margin-bottom: 12px; font-weight: 500; }
@@ -77,8 +66,6 @@
     }
     .prf-opt:hover { border-color: rgba(13,94,87,.5); background: rgba(13,94,87,.08); color: var(--text); }
     .prf-opt.selected { border-color: var(--teal); background: rgba(13,94,87,.18); color: var(--text); }
-
-    /* ── Score bars ── */
     .score-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 18px 0; }
     .score-bar { background: rgba(255,255,255,.04); border: 1px solid var(--line); border-radius: 14px; padding: 13px; }
     .score-bar-label { font: 700 .68rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--dim); margin-bottom: 6px; }
@@ -86,8 +73,6 @@
     .bar { height: 8px; background: rgba(255,255,255,.08); border-radius: 999px; overflow: hidden; }
     .bar-fill { height: 100%; background: linear-gradient(90deg, var(--teal), var(--gold)); border-radius: 999px; transition: width .4s ease; }
     .score-val { font: 700 .78rem/1 var(--mono); color: var(--gold); margin-top: 6px; }
-
-    /* ── Essay ── */
     .essay-block { margin-bottom: 22px; }
     .essay-q-num { font: 700 .68rem/1 var(--mono); color: var(--gold); letter-spacing: .1em; display: block; margin-bottom: 5px; }
     .essay-q { font-size: .95rem; color: var(--text); line-height: 1.65; margin-bottom: 10px; font-weight: 500; }
@@ -99,8 +84,6 @@
     }
     textarea:focus { border-color: rgba(13,94,87,.55); box-shadow: 0 0 0 3px rgba(13,94,87,.12); }
     .essay-count { font: 500 .72rem/1 var(--mono); color: var(--dim); text-align: right; margin-top: 5px; }
-
-    /* ── Buttons ── */
     .btn {
       display: inline-flex; align-items: center; gap: 7px;
       border: 1px solid rgba(201,168,76,.4); background: rgba(201,168,76,.08);
@@ -121,8 +104,6 @@
     .btn.download { background: rgba(96,163,111,.12); border-color: rgba(96,163,111,.42); }
     .btn.download:hover { background: rgba(96,163,111,.22); border-color: rgba(96,163,111,.7); }
     .btn-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
-
-    /* ── Profile ── */
     .profile-output {
       background: linear-gradient(135deg, rgba(201,168,76,.07), rgba(13,94,87,.07));
       border: 1px solid rgba(201,168,76,.28); border-radius: var(--radius);
@@ -134,8 +115,6 @@
     .profile-body p { margin-bottom: 1.2em; }
     .profile-body p:last-child { margin-bottom: 0; }
     .foundation-pill { display: inline-flex; align-items: center; gap: 6px; border: 1px solid rgba(13,94,87,.45); background: rgba(13,94,87,.14); color: #5fc9bf; border-radius: 999px; padding: 5px 10px; font: 700 .72rem/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; margin: 6px 0 2px; }
-
-    /* ── Gateway section ── */
     .gateway-section {
       border: 1px solid rgba(201,168,76,.35);
       background: linear-gradient(135deg, rgba(201,168,76,.10), rgba(13,94,87,.09));
@@ -144,8 +123,6 @@
     .gateway-eyebrow { font: 700 .7rem/1 var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
     .gateway-title { font-family: var(--serif); font-size: 1.55rem; color: var(--text); margin-bottom: 10px; line-height: 1.2; }
     .gateway-desc { color: var(--muted); font-size: .93rem; line-height: 1.65; max-width: 500px; margin: 0 auto 20px; }
-
-    /* ── Code display ── */
     .code-display {
       display: none; margin-top: 22px;
       border: 1px solid rgba(13,94,87,.45); background: rgba(13,94,87,.09);
@@ -163,19 +140,13 @@
       color: var(--muted); font-size: .88rem; line-height: 1.6; margin: 16px 0;
     }
     .code-instruction strong { color: var(--text); }
-
-    /* ── Download grid ── */
     .download-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 18px; }
     .download-card { border: 1px solid var(--line); background: rgba(255,255,255,.04); border-radius: 14px; padding: 15px; }
     .download-card-title { font-weight: 700; color: var(--text); margin-bottom: 5px; font-size: .9rem; }
     .download-card-desc { color: var(--muted); font-size: .82rem; line-height: 1.5; margin-bottom: 12px; }
-
-    /* ── Notes ── */
     .note { border-left: 3px solid rgba(201,168,76,.5); background: rgba(201,168,76,.06); border-radius: 0 12px 12px 0; padding: 12px 15px; color: var(--muted); font-size: .88rem; line-height: 1.6; margin: 14px 0; }
     .note strong { color: var(--text); }
     .privacy-note { border-left: 3px solid rgba(96,163,111,.45); background: rgba(96,163,111,.06); border-radius: 0 12px 12px 0; padding: 10px 14px; color: var(--muted); font-size: .84rem; line-height: 1.55; margin: 12px 0; }
-
-    /* ── Privacy section on intro ── */
     .privacy-section { margin-top: 18px; border: 1px solid rgba(96,163,111,.30); background: rgba(96,163,111,.055); border-radius: 14px; padding: 16px 18px; }
     .privacy-section-title { font: 700 .7rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: #60a36f; margin-bottom: 10px; }
     .privacy-row { display: grid; grid-template-columns: 28px 1fr; gap: 10px; align-items: start; padding: 8px 0; border-top: 1px solid rgba(255,255,255,.06); color: var(--muted); font-size: .88rem; line-height: 1.55; }
@@ -183,23 +154,15 @@
     .privacy-row strong { color: var(--text); }
     .privacy-link { color: var(--teal2); font: 600 .84rem/1 var(--sans); text-decoration: none; }
     .privacy-link:hover { color: var(--gold); }
-
-    /* ── Loading ── */
     .loading-state { display: none; flex-direction: column; align-items: center; gap: 16px; padding: 40px; text-align: center; }
     .loading-state.visible { display: flex; }
     .spinner { width: 36px; height: 36px; border: 3px solid rgba(255,255,255,.1); border-top-color: var(--gold); border-radius: 50%; animation: spin .9s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
-
-    /* ── Section visibility ── */
     .section { display: none; }
     .section.active { display: block; }
-
-    /* ── Persistent footer ── */
     .app-footer { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(6,11,24,.92); border-top: 1px solid var(--line); backdrop-filter: blur(10px); display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; font: 500 .74rem/1 var(--mono); color: var(--dim); z-index: 100; gap: 12px; }
     .app-footer a { color: var(--teal2); text-decoration: none; white-space: nowrap; }
     .app-footer a:hover { color: var(--gold); }
-
-    /* ── Privacy Modal ── */
     .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(6,11,24,.88); backdrop-filter: blur(6px); z-index: 200; overflow-y: auto; padding: 24px 16px; }
     .modal-overlay.open { display: flex; align-items: flex-start; justify-content: center; }
     .modal-box { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; width: min(680px, 100%); margin: auto; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,.5); }
@@ -221,7 +184,6 @@
     .disclosure-block.crisis { border: 1px solid rgba(204,107,95,.4); background: rgba(204,107,95,.07); border-radius: 12px; padding: 14px 16px; }
     .disclosure-label.crisis-label { color: #fca5a5; }
     .disclosure-footer { margin-top: 20px; font: 500 .76rem/1.6 var(--mono); color: var(--dim); }
-
     @media (max-width: 600px) {
       .score-grid { grid-template-columns: 1fr; }
       .download-grid { grid-template-columns: 1fr; }
@@ -230,13 +192,11 @@
 </head>
 <body>
 <div class="shell">
-
   <div class="app-header">
-    <div class="app-eyebrow">Ethics Beyond Boundaries · Saint Petersburg College</div>
+    <div class="app-eyebrow">Ethics Beyond Boundaries &middot; Saint Petersburg College</div>
     <h1 class="app-title">PRF-22 Gateway</h1>
     <p class="app-subtitle">Map your moral foundations. Receive your Philosophical Profile. Carry it into The Navigator and begin.</p>
   </div>
-
   <div class="progress-wrap">
     <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
     <div class="progress-label"><span id="progress-text">Introduction</span><span id="progress-pct">0%</span></div>
@@ -246,24 +206,31 @@
   <div id="section-intro" class="section active">
     <div class="card">
       <span class="phase-label">Before you begin</span>
-      <h2 class="card-title">What this is — and what it is not</h2>
-      <p class="card-desc">The PRF-22 is a <strong>structured reflection prompt set, not a validated psychometric scale.</strong> It gives you a provisional map of how you tend to perceive moral situations — what you notice first, what registers as urgent, and where your perception may have characteristic blind spots. It is a beginning, not a verdict.</p>
+      <h2 class="card-title">What this is &mdash; and what it is not</h2>
+      <p class="card-desc">The PRF-22 is a <strong>structured reflection prompt set, not a validated psychometric scale.</strong> It gives you a provisional map of how you tend to perceive moral situations &mdash; what you notice first, what registers as urgent, and where your perception may have characteristic blind spots. It is a beginning, not a verdict.</p>
       <div class="note"><strong>Two parts.</strong> Six scenario questions that reveal your moral foundations weighting. Six assembly history questions about the experiences and relationships that shaped your moral perception. The more honest and specific your answers, the more the profile will feel like genuine recognition rather than a generic description.</div>
-      <div class="note"><strong>What you receive.</strong> Your Philosophical Profile — a 600–800 word portrait of your moral architecture generated from your answers. A ceremonial send button that carries your profile directly into a companion app with a single code. And two downloadable JSON files for use with different reflection platforms.</div>
-      <div class="note"><strong>Which file is yours?</strong> <strong>If you are taking a college course</strong> — use the Navigator JSON file and the "Begin with The Navigator" button when your profile is ready. That is the platform your course uses. <strong>If you are exploring on your own</strong> outside a course context, both files are available for the platform that fits your situation best — your instructor or the person who sent you here can tell you which one to use.</div>
+      <div class="note"><strong>What you receive.</strong> Your Philosophical Profile &mdash; a 600&ndash;800 word portrait of your moral architecture generated from your answers. A send button that carries your profile directly into the Navigator with a single code. And two downloadable JSON files for use with different reflection platforms.</div>
+
+      <!-- CHANGE 4: Updated "Which path" note for two tracks -->
+      <div class="note"><strong>Which path is yours?</strong> <strong>Track&nbsp;1 (with AI):</strong> Complete both parts, generate your Philosophical Profile, and carry it into the Navigator &mdash; your Twin will begin knowing who you are. <strong>Track&nbsp;2 (no AI):</strong> Complete both parts, download your answers using the button at the bottom of Part&nbsp;2, and write a 300-word personal reflection essay for Canvas. Both tracks are equally valid. Your instructor will tell you which is required for your section.</div>
 
       <div class="privacy-section">
         <div class="privacy-section-title">Privacy summary</div>
-        <div class="privacy-row"><span>🔒</span><div><strong>Your answers stay in your browser</strong> until you click Generate Profile. Nothing is transmitted before that point.</div></div>
-        <div class="privacy-row"><span>📡</span><div><strong>When you generate:</strong> your answers travel via encrypted HTTPS to a course proxy, then to Anthropic's Claude API. The same encryption standard as online banking.</div></div>
-        <div class="privacy-row"><span>🚫</span><div><strong>No data is stored on any server.</strong> The proxy does not retain your responses. Anthropic does not store API content and does not train on it.</div></div>
-        <div class="privacy-row"><span>🔄</span><div><strong>When you send to The Navigator:</strong> your profile data is held in server memory for up to 10 minutes and deleted immediately when received. It is never written to disk.</div></div>
-        <div class="privacy-row"><span>🎓</span><div><strong>Your instructor cannot see your profile or essays</strong> unless you explicitly share them.</div></div>
-        <div style="margin-top:12px;"><a href="#" onclick="openPrivacyModal();return false;" class="privacy-link">Read the full privacy disclosure →</a></div>
-      </div>
 
+        <!-- CHANGE 3: Prominent no-training banner at top of privacy section -->
+        <div style="background:rgba(96,163,111,.14);border:1px solid rgba(96,163,111,.38);border-radius:10px;padding:10px 14px;margin-bottom:12px;font-size:.88rem;color:#9adfa9;font-weight:600;line-height:1.5;">
+          &#10003;&nbsp; <strong>Anthropic does not train AI models on your responses.</strong> Your content is not retained by any server after transmission. This tool uses the same encryption standard as online banking.
+        </div>
+
+        <div class="privacy-row"><span>&#128274;</span><div><strong>Your answers stay in your browser</strong> until you click Generate Profile. Nothing is transmitted before that point.</div></div>
+        <div class="privacy-row"><span>&#128225;</span><div><strong>When you generate:</strong> your answers travel via encrypted HTTPS to a course proxy, then to Anthropic&rsquo;s Claude API. The same encryption standard as online banking.</div></div>
+        <div class="privacy-row"><span>&#128683;</span><div><strong>No data is stored on any server.</strong> The proxy does not retain your responses. Anthropic does not store API content and does not train on it.</div></div>
+        <div class="privacy-row"><span>&#128260;</span><div><strong>When you send to The Navigator:</strong> your profile data is held in server memory for up to 10 minutes and deleted immediately when received. It is never written to disk.</div></div>
+        <div class="privacy-row"><span>&#127891;</span><div><strong>Your instructor cannot see your profile or essays</strong> unless you explicitly share them.</div></div>
+        <div style="margin-top:12px;"><a href="#" onclick="openPrivacyModal();return false;" class="privacy-link">Read the full privacy disclosure &rarr;</a></div>
+      </div>
       <div class="btn-row">
-        <button class="btn primary" onclick="goTo('section-prf')">Begin the assessment →</button>
+        <button class="btn primary" onclick="goTo('section-prf')">Begin the assessment &rarr;</button>
       </div>
     </div>
   </div>
@@ -271,19 +238,19 @@
   <!-- ═══ SECTION 2: PRF Scenarios ═══ -->
   <div id="section-prf" class="section">
     <div class="card">
-      <span class="phase-label">Part 1 of 2 — Moral Foundations</span>
+      <span class="phase-label">Part 1 of 2 &mdash; Moral Foundations</span>
       <h2 class="card-title">Six scenarios</h2>
-      <p class="card-desc">For each situation, choose the response that most closely matches your first instinct — before you begin reasoning about it. There are no correct answers. The goal is to surface which moral considerations feel most urgent to you by default.</p>
+      <p class="card-desc">For each situation, choose the response that most closely matches your first instinct &mdash; before you begin reasoning about it. There are no correct answers. The goal is to surface which moral considerations feel most urgent to you by default.</p>
     </div>
     <div id="prf-questions-container"></div>
     <div class="card">
       <div id="prf-score-preview" style="display:none;">
-        <span class="phase-label">Foundation pattern — provisional</span>
+        <span class="phase-label">Foundation pattern &mdash; provisional</span>
         <div class="score-grid" id="score-bars"></div>
       </div>
       <div class="btn-row">
-        <button class="btn primary" id="prf-next-btn" onclick="goTo('section-essays')" disabled>Continue to Assembly History →</button>
-        <button class="btn" onclick="goTo('section-intro')">← Back</button>
+        <button class="btn primary" id="prf-next-btn" onclick="goTo('section-essays')" disabled>Continue to Assembly History &rarr;</button>
+        <button class="btn" onclick="goTo('section-intro')">&larr; Back</button>
       </div>
     </div>
   </div>
@@ -291,113 +258,104 @@
   <!-- ═══ SECTION 3: Assembly History ═══ -->
   <div id="section-essays" class="section">
     <div class="card">
-      <span class="phase-label">Part 2 of 2 — Assembly History</span>
+      <span class="phase-label">Part 2 of 2 &mdash; Assembly History</span>
       <h2 class="card-title">Six questions about your formation</h2>
-      <p class="card-desc">Your moral perception was not chosen — it was assembled through your specific biography. These questions ask you to look at that assembly. Answer at least four to generate your profile. Specificity matters more than polish.</p>
+      <p class="card-desc">Your moral perception was not chosen &mdash; it was assembled through your specific biography. These questions ask you to look at that assembly. Answer at least four to generate your profile. Specificity matters more than polish.</p>
+
+      <!-- CHANGE 1: Preface connection note -->
+      <div class="note" style="border-left-color:rgba(13,94,87,.55);background:rgba(13,94,87,.06);margin-top:14px;">
+        <strong>Connecting to the Preface:</strong> If you completed the sixty-second reflection in the course Preface &mdash; naming one thing that strikes you as clearly, obviously wrong &mdash; bring that moment here. Question&nbsp;1 below asks for that same felt certainty, and for the earliest time you experienced something like it. Start there if you did the Preface exercise; that response is already your data.
+      </div>
     </div>
     <div class="card" id="essays-container"></div>
     <div class="card">
       <div class="privacy-note">When you click Generate Profile, your foundation scores and essay responses are sent via encrypted HTTPS to generate your profile text. This is the only transmission. The profile is returned to your browser.</div>
       <div class="btn-row">
-        <button class="btn primary" id="generate-btn" onclick="generateProfile()" disabled>Generate My Philosophical Profile →</button>
-        <button class="btn" onclick="goTo('section-prf')">← Back</button>
+        <button class="btn primary" id="generate-btn" onclick="generateProfile()" disabled>Generate My Philosophical Profile &rarr;</button>
+        <button class="btn" onclick="goTo('section-prf')">&larr; Back</button>
+      </div>
+
+      <!-- CHANGE 2: Track 2 section -->
+      <div style="margin-top:24px;padding-top:18px;border-top:1px solid rgba(255,255,255,.08);">
+        <div style="font:700 .68rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--teal2);margin-bottom:8px;">Track 2 &mdash; No AI Option</div>
+        <p style="color:var(--muted);font-size:.88rem;line-height:1.65;margin-bottom:14px;">Prefer not to use AI? Download your answers as a formatted text file instead. You will then write a personal reflection essay of at least 300&nbsp;words that applies what you noticed to your own life &mdash; this essay is your equivalent of the AI conversation that Track&nbsp;1 students have with the Navigator. Four or more Assembly History answers are helpful but not required to download. Submit your essay to Canvas.</p>
+        <button class="btn download" onclick="printMyAnswers()">&#8659;&nbsp;Download My Answers (Track 2 &mdash; No AI)</button>
       </div>
     </div>
   </div>
 
   <!-- ═══ SECTION 4: Profile + Gateway ═══ -->
   <div id="section-profile" class="section">
-
-    <!-- Loading -->
     <div class="loading-state" id="loading-state">
       <div class="spinner"></div>
-      <div style="color:var(--muted);font-size:.9rem;">Generating your Philosophical Profile — about 20 seconds…</div>
+      <div style="color:var(--muted);font-size:.9rem;">Generating your Philosophical Profile &mdash; about 20 seconds&hellip;</div>
     </div>
-
-    <!-- Result -->
     <div id="profile-result" style="display:none;">
-
-      <!-- Profile text -->
       <div class="card">
         <span class="phase-label">Your Philosophical Profile</span>
         <div class="foundation-pill" id="foundation-pill"></div>
         <div class="profile-output">
-          <div class="profile-eyebrow">PRF-22 · Ethics Beyond Boundaries · Saint Petersburg College</div>
+          <div class="profile-eyebrow">PRF-22 &middot; Ethics Beyond Boundaries &middot; Saint Petersburg College</div>
           <div class="profile-foundation" id="profile-foundation-label"></div>
           <div class="profile-body" id="profile-body"></div>
         </div>
       </div>
-
-      <!-- Foundation scores -->
       <div class="card">
         <span class="phase-label">Your Foundation Scores</span>
         <div class="score-grid" id="final-score-bars"></div>
       </div>
-
-      <!-- ── Gateway Section ── -->
       <div class="gateway-section">
         <div class="gateway-eyebrow">Your next step</div>
         <h2 class="gateway-title">Carry your profile into The Navigator</h2>
-        <p class="gateway-desc">Your Philosophical Profile is ready. Send it directly to The Navigator with one click — your Twin will begin knowing who you are before your first conversation.</p>
-
-        <button class="btn gateway" id="gateway-btn" onclick="gatewaySend()">
-          Begin with The Navigator →
-        </button>
-
-        <!-- Code display (shown after send) -->
+        <p class="gateway-desc">Your Philosophical Profile is ready. Send it directly to The Navigator with one click &mdash; your Twin will begin knowing who you are before your first conversation.</p>
+        <button class="btn gateway" id="gateway-btn" onclick="gatewaySend()">Begin with The Navigator &rarr;</button>
         <div class="code-display" id="gateway-code-display">
-          <div class="code-label">Enter this code in The Navigator → Memory → Sync Between Devices</div>
+          <div class="code-label">Enter this code in The Navigator &rarr; Memory &rarr; Sync Between Devices</div>
           <div class="code-chars" id="gateway-code-chars"></div>
           <div class="code-countdown" id="gateway-countdown"></div>
           <img id="gateway-qr" class="code-qr" width="160" height="160" alt="QR code for Navigator sync" />
           <div class="code-qr-label">Or scan this QR code on your phone to open The Navigator with your profile pre-loaded</div>
           <div class="code-instruction">
-            <strong>On your laptop or desktop:</strong> Open The Navigator, go to the Memory workspace, find "Sync Between Devices," choose Receive, and enter the code above.<br><br>
-            <strong>On your phone:</strong> Scan the QR code — it will open The Navigator directly in the Receive flow with your code pre-filled.
+            <strong>On your laptop or desktop:</strong> Open The Navigator, go to the Memory workspace, find &ldquo;Sync Between Devices,&rdquo; choose Receive, and enter the code above.<br><br>
+            <strong>On your phone:</strong> Scan the QR code &mdash; it will open The Navigator directly in the Receive flow with your code pre-filled.
           </div>
           <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px;">
-            <a href="https://rmertzman-tech.github.io/SPC-Navigator/" target="_blank" class="btn primary" style="text-decoration:none;">Open The Navigator ↗</a>
+            <a href="https://rmertzman-tech.github.io/SPC-Navigator/" target="_blank" class="btn primary" style="text-decoration:none;">Open The Navigator &#8599;</a>
             <button class="btn" onclick="gatewayCancel()">Cancel transfer</button>
           </div>
         </div>
-
         <div style="margin-top:16px;color:var(--dim);font:500 .8rem/1.5 var(--mono);">
           The code is valid for 10 minutes. Your profile is deleted from the server the moment The Navigator receives it.
         </div>
       </div>
-
-      <!-- Downloads (secondary — archival copies) -->
       <div class="card" style="margin-top:18px;">
         <span class="phase-label">Keep archival copies</span>
         <h2 class="card-title" style="font-size:1.1rem;">Download your files</h2>
-        <p class="card-desc">Download these for safekeeping — you can re-import them into either app at any time, or use the Examined file to start a session in The Examined after the course.</p>
+        <p class="card-desc">Download these for safekeeping &mdash; you can re-import them into either app at any time, or use the Examined file to start a session in The Examined after the course.</p>
         <div class="download-grid">
           <div class="download-card">
             <div class="download-card-title">The Navigator</div>
-            <div class="download-card-desc">Import via Memory workspace → PRF-22 / E-Twin Profile → Import PRF-22 JSON. Use this if the sync code expires.</div>
-            <button class="btn download" onclick="downloadNavigatorJSON()">⬇ Navigator JSON</button>
+            <div class="download-card-desc">Import via Memory workspace &rarr; PRF-22 / E-Twin Profile &rarr; Import PRF-22 JSON. Use this if the sync code expires.</div>
+            <button class="btn download" onclick="downloadNavigatorJSON()">&#8659; Navigator JSON</button>
           </div>
           <div class="download-card">
             <div class="download-card-title">The Examined</div>
-            <div class="download-card-desc">Import via the About tab → Restore Twin. Use this for independent exploration after the course.</div>
-            <button class="btn download" onclick="downloadExaminedJSON()">⬇ Examined JSON</button>
+            <div class="download-card-desc">Import via the About tab &rarr; Restore Twin. Use this for independent exploration after the course.</div>
+            <button class="btn download" onclick="downloadExaminedJSON()">&#8659; Examined JSON</button>
           </div>
         </div>
         <div class="btn-row" style="margin-top:16px;">
-          <button class="btn download" onclick="downloadProfileTXT()">⬇ Profile as text</button>
+          <button class="btn download" onclick="downloadProfileTXT()">&#8659; Profile as text</button>
           <button class="btn" onclick="startOver()">Start over</button>
         </div>
-        <div class="privacy-note" style="margin-top:14px;"><strong>Reminder:</strong> These files contain personal reflection data. Do not submit them directly as Canvas assignments — use the Maturity Snapshot in The Navigator for course checkpoints.</div>
+        <div class="privacy-note" style="margin-top:14px;"><strong>Reminder:</strong> These files contain personal reflection data. Do not submit them directly as Canvas assignments &mdash; use the Maturity Snapshot in The Navigator for course checkpoints.</div>
       </div>
+    </div>
+  </div>
+</div>
 
-    </div><!-- /profile-result -->
-  </div><!-- /section-profile -->
-
-</div><!-- /shell -->
-
-<!-- Persistent footer -->
 <div class="app-footer">
-  <span>PRF-22 Gateway · Ethics Beyond Boundaries · Saint Petersburg College</span>
+  <span>PRF-22 Gateway &middot; Ethics Beyond Boundaries &middot; Saint Petersburg College</span>
   <a href="#" onclick="openPrivacyModal();return false;">Privacy &amp; Data Disclosure</a>
 </div>
 
@@ -407,7 +365,7 @@
     <div class="modal-header">
       <div class="modal-eyebrow">PRF-22 Gateway</div>
       <h2 class="modal-title">Privacy &amp; Data Disclosure</h2>
-      <button class="modal-close" onclick="closePrivacyModal()" aria-label="Close">✕</button>
+      <button class="modal-close" onclick="closePrivacyModal()" aria-label="Close">&#x2715;</button>
     </div>
     <div class="modal-body">
       <div class="disclosure-block">
@@ -416,19 +374,19 @@
       </div>
       <div class="disclosure-block">
         <div class="disclosure-label">What stays in your browser</div>
-        <p>Your scenario answers and essay responses are stored only in your browser's memory while you use the app. <strong>Nothing is sent to any server before you click Generate Profile.</strong> If you close the tab before generating, your answers are not saved anywhere.</p>
+        <p>Your scenario answers and essay responses are stored only in your browser&rsquo;s memory while you use the app. <strong>Nothing is sent to any server before you click Generate Profile.</strong> If you close the tab before generating, your answers are not saved anywhere.</p>
       </div>
       <div class="disclosure-block">
         <div class="disclosure-label">What is transmitted when you generate your profile</div>
-        <p>When you click Generate Profile, your six scenario answers and six essay responses travel via an <strong>encrypted HTTPS/TLS connection</strong> to a course proxy server on Render.com, operated for this course. The proxy forwards your request to <strong>Anthropic's Claude API</strong>, which generates your profile text and returns it to your browser.</p>
+        <p>When you click Generate Profile, your six scenario answers and six essay responses travel via an <strong>encrypted HTTPS/TLS connection</strong> to a course proxy server on Render.com, operated for this course. The proxy forwards your request to <strong>Anthropic&rsquo;s Claude API</strong>, which generates your profile text and returns it to your browser.</p>
         <p><strong>No copy of your essay responses or generated profile is retained on the proxy server or by Anthropic.</strong> This is a one-time transmission at the moment of generation.</p>
       </div>
       <div class="disclosure-block">
         <div class="disclosure-label">What is transmitted when you send to The Navigator</div>
-        <p>When you click "Begin with The Navigator," your PRF-22 profile data is sent via HTTPS to the course relay endpoint on Render.com. It is held in server memory only — <strong>never written to disk</strong> — for up to 10 minutes, then deleted whether or not it is received. The moment The Navigator retrieves it with your code, it is deleted immediately from server memory. The code can only be used once.</p>
+        <p>When you click &ldquo;Begin with The Navigator,&rdquo; your PRF-22 profile data is sent via HTTPS to the course relay endpoint on Render.com. It is held in server memory only &mdash; <strong>never written to disk</strong> &mdash; for up to 10 minutes, then deleted whether or not it is received. The moment The Navigator retrieves it with your code, it is deleted immediately from server memory. The code can only be used once.</p>
       </div>
       <div class="disclosure-block">
-        <div class="disclosure-label">AI training — what Anthropic does and does not do</div>
+        <div class="disclosure-label">AI training &mdash; what Anthropic does and does not do</div>
         <p><strong>Anthropic does not use API data to train its models.</strong> Your essay responses and generated profile are not used for model training, improvement, or retention by Anthropic. See <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">anthropic.com/privacy</a>.</p>
       </div>
       <div class="disclosure-block">
@@ -436,8 +394,8 @@
         <p>Your instructor <strong>cannot see your PRF-22 answers, essay responses, or generated profile</strong> through this app. Nothing is reported to SPC, Canvas, or any institutional system. If you share your profile as part of a course activity, that sharing is your choice and is initiated by you.</p>
       </div>
       <div class="disclosure-block">
-        <div class="disclosure-label">What to write — and what not to write</div>
-        <p>Write only what you are comfortable transmitting to a third-party AI service. You do not need to include identifying information. The more specific your answers, the more precise your profile — but you remain in control of what you share.</p>
+        <div class="disclosure-label">What to write &mdash; and what not to write</div>
+        <p>Write only what you are comfortable transmitting to a third-party AI service. You do not need to include identifying information. The more specific your answers, the more precise your profile &mdash; but you remain in control of what you share.</p>
       </div>
       <div class="disclosure-block crisis">
         <div class="disclosure-label crisis-label">If you are in crisis</div>
@@ -447,21 +405,19 @@
         <div class="disclosure-label">Voluntary participation</div>
         <p>Completing the PRF-22 is a course activity, but what you write is your own. You are not required to share your profile or JSON files unless your instructor explicitly asks and you choose to participate.</p>
       </div>
-      <div class="disclosure-footer">Ethics Beyond Boundaries · Saint Petersburg College · 2026<br>Questions: contact your course instructor.</div>
+      <div class="disclosure-footer">Ethics Beyond Boundaries &middot; Saint Petersburg College &middot; 2026<br>Questions: contact your course instructor.</div>
     </div>
     <div class="modal-footer">
-      <button class="btn primary" onclick="closePrivacyModal()">I understand — close this</button>
+      <button class="btn primary" onclick="closePrivacyModal()">I understand &mdash; close this</button>
     </div>
   </div>
 </div>
 
 <script>
 'use strict';
-
 var BACKEND = 'https://ucp-backend-4dig.onrender.com';
 var NAVIGATOR_URL = 'https://rmertzman-tech.github.io/SPC-Navigator/';
 
-// ── PRF Data ─────────────────────────────────────────────────────────────────
 var PRF_Q = [
   {q:'A community discovers that a long-admired leader secretly exploited others for personal gain. What matters most now?',
    opts:['The harm caused to those exploited must be addressed first','The community\u2019s trust and future stability','Whether the leader acknowledges wrongdoing and seeks forgiveness','The rules and obligations that were violated']},
@@ -488,12 +444,11 @@ var PRF_KEYS  = ['care','fair','auth','loyal'];
 var PRF_NAMES = {care:'Care & Fairness', fair:'Fairness & Justice', loyal:'Loyalty & Community', auth:'Authority & Stability'};
 var PRF_COLORS = {care:'#4A90A4', fair:'#6B8E4E', loyal:'#D4A574', auth:'#8B7BA8'};
 var PRF_DESC = {
-  care:'You notice harm and vulnerability before most other moral considerations. When you encounter a moral situation, the suffering of specific people registers first — before rules, group loyalty, or hierarchy.',
+  care:'You notice harm and vulnerability before most other moral considerations. When you encounter a moral situation, the suffering of specific people registers first \u2014 before rules, group loyalty, or hierarchy.',
   fair:'You notice procedural consistency and equal treatment before most other moral considerations. Fairness, proportionality, and whether rules apply equally tend to register first.',
   loyal:'You notice threats to community coherence and trust before most other moral considerations. Who owes what to whom, and whether the group can hold together, tend to register first.',
   auth:'You notice whether legitimate structure is being respected or undermined before most other moral considerations. Proper authority, institutional integrity, and role obligation tend to register first.'
 };
-
 var ASM_Q = [
   {n:'1', q:'What is the earliest moment you can recall when something felt genuinely wrong \u2014 not just wrong to you personally, but wrong in a way that seemed to matter beyond yourself? Describe the situation and what you noticed.'},
   {n:'2', q:'Describe someone from your early life whose way of moving through the world you found yourself watching and absorbing. What specifically did they do that you noticed and stored?'},
@@ -503,13 +458,9 @@ var ASM_Q = [
   {n:'6', q:'Think about a version of yourself from a few years ago \u2014 or the earliest time you can clearly remember having a sense of who you were. What has remained most stable about you since then? And what has already shifted in ways that surprised you?'},
 ];
 
-// ── App State ─────────────────────────────────────────────────────────────────
 var state = { prfAnswers:{}, prfScores:{care:0,fair:0,auth:0,loyal:0}, asmAnswers:{}, profile:'', primary:'', generatedAt:'' };
-
-// ── Gateway State ─────────────────────────────────────────────────────────────
 var gatewayState = { activeCode: null, countdownInterval: null, expiresAt: null };
 
-// ── Navigation ────────────────────────────────────────────────────────────────
 var SECTIONS = ['section-intro','section-prf','section-essays','section-profile'];
 var LABELS   = ['Introduction','Moral Foundations','Assembly History','Your Profile'];
 
@@ -524,7 +475,6 @@ function goTo(id) {
   document.getElementById('progress-pct').textContent = pct + '%';
 }
 
-// ── PRF ───────────────────────────────────────────────────────────────────────
 function buildPRF() {
   var c = document.getElementById('prf-questions-container'); c.innerHTML = '';
   PRF_Q.forEach(function(q, qi) {
@@ -570,14 +520,13 @@ function updateScoreBars(id, provisional) {
     var pct = Math.round(((s[k]||0)/max)*100);
     var isPrimary = k === state.primary;
     return '<div class="score-bar">'
-      +'<div class="score-bar-label">'+(isPrimary?'★ Primary':'Foundation')+'</div>'
+      +'<div class="score-bar-label">'+(isPrimary?'\u2605 Primary':'Foundation')+'</div>'
       +'<div class="score-bar-name">'+esc(PRF_NAMES[k])+'</div>'
       +'<div class="bar"><div class="bar-fill" style="width:'+pct+'%;background:'+(isPrimary?'linear-gradient(90deg,'+PRF_COLORS[k]+',var(--gold))':'rgba(255,255,255,.25)')+'"></div></div>'
       +'<div class="score-val">'+(s[k]||0)+' pts'+(provisional?' (provisional)':'')+'</div></div>';
   }).join('');
 }
 
-// ── Essays ────────────────────────────────────────────────────────────────────
 function buildEssays() {
   var c = document.getElementById('essays-container'); c.innerHTML = '';
   ASM_Q.forEach(function(q) {
@@ -586,7 +535,7 @@ function buildEssays() {
     var saved = state.asmAnswers[q.n] || '';
     block.innerHTML = '<span class="essay-q-num">Assembly History '+q.n+'</span>'
       +'<div class="essay-q">'+esc(q.q)+'</div>'
-      +'<textarea id="asm-'+q.n+'" placeholder="Write here — a few sentences or much more. Honesty matters more than polish." oninput="checkEssayProgress()">'+esc(saved)+'</textarea>'
+      +'<textarea id="asm-'+q.n+'" placeholder="Write here \u2014 a few sentences or much more. Honesty matters more than polish." oninput="checkEssayProgress()">'+esc(saved)+'</textarea>'
       +'<div class="essay-count" id="asm-count-'+q.n+'">'+saved.length+' characters</div>';
     c.appendChild(block);
   });
@@ -605,17 +554,14 @@ function checkEssayProgress() {
   document.getElementById('generate-btn').disabled = filled < 4;
 }
 
-// ── Profile Generation ────────────────────────────────────────────────────────
 async function generateProfile() {
   ASM_Q.forEach(function(q){ var el=document.getElementById('asm-'+q.n); if(el) state.asmAnswers[q.n]=el.value; });
   goTo('section-profile');
   document.getElementById('loading-state').classList.add('visible');
   document.getElementById('profile-result').style.display = 'none';
-
   var s = state.prfScores, primary = state.primary;
   var sys = 'You are generating a personal philosophical profile for a person who has completed a moral framework assessment and answered six assembly history questions. Your task is to write a profile that feels like genuine recognition \u2014 like the person is reading a description of themselves that is more precise and personal than they usually receive.\n\nPRF scores: Care='+s.care+', Fairness='+s.fair+', Loyalty='+s.loyal+', Authority='+s.auth+'\nPrimary moral foundation: '+PRF_NAMES[primary]+'\n\nWrite exactly 5 paragraphs (600\u2013800 words total) that:\n1. Describe specifically how this person tends to perceive moral situations \u2014 what they notice first, what registers as urgent before anything else does\n2. Describe their characteristic strengths as a moral agent given this specific framework\n3. Name the specific blind spots or tensions their framework creates \u2014 what they tend to miss, misread, or find genuinely difficult\n4. Weave in themes from their assembly history responses without quoting them directly \u2014 notice patterns, connections, and tensions across the six answers that the person may not have noticed themselves\n5. End with a question this person has probably been living with for years without quite being able to articulate it\n\n6. Add a final short paragraph (80\u2013100 words) that names the specific philosophical extension question this framework opens. Do not moralize. Describe what the examined life, for someone with this specific moral architecture, makes it necessary to eventually examine. For a Care-dominant person: whose suffering registers and whose does not. For a Fairness-dominant person: whether the rules they apply equally are themselves fair to those who did not make them. For a Loyalty-dominant person: what obligations remain to those outside the primary circle. For an Authority-dominant person: whether the structures they respect protect or exclude those with less access. Name this question as genuinely theirs.\n\nStyle: Use second person (you, your). Be personal and precise, not clinical or generic. The goal is recognition, not analysis.';
   var userContent = 'Assembly history responses:\n\n'+ASM_Q.map(function(q){ return 'Q: '+q.q+'\nA: '+(state.asmAnswers[q.n]||'(not answered)'); }).join('\n\n');
-
   try {
     var res = await fetch(BACKEND+'/api/claude-proxy', {
       method:'POST', headers:{'Content-Type':'application/json'},
@@ -633,7 +579,6 @@ async function generateProfile() {
     document.getElementById('loading-state').classList.remove('visible');
     document.getElementById('profile-result').style.display = 'block';
     document.getElementById('profile-body').innerHTML = '<div style="color:#fca5a5;border:1px solid rgba(204,107,95,.4);border-radius:12px;padding:14px;line-height:1.6;">Could not generate profile: '+esc(e.message)+'<br><br>Please check your connection and try again. Your answers are preserved.</div>';
-    document.getElementById('profile-title') && (document.getElementById('profile-title').textContent = 'Profile generation failed');
     document.getElementById('foundation-pill').textContent = '';
     document.getElementById('profile-foundation-label').textContent = '';
   }
@@ -651,15 +596,14 @@ function renderProfileResult() {
   updateScoreBars('final-score-bars', false);
 }
 
-// ── Gateway Send ──────────────────────────────────────────────────────────────
 async function gatewaySend() {
   var btn = document.getElementById('gateway-btn');
-  if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+  if (btn) { btn.disabled = true; btn.textContent = 'Sending\u2026'; }
   try {
     var payload = buildNavigatorJSON();
     var res = await fetch(BACKEND+'/api/sync/push', {
       method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ data: payload, label: 'PRF-22 Philosophical Profile — ' + (PRF_NAMES[state.primary]||'Mixed') })
+      body: JSON.stringify({ data: payload, label: 'PRF-22 Philosophical Profile \u2014 ' + (PRF_NAMES[state.primary]||'Mixed') })
     });
     var json = await res.json();
     if (!res.ok || !json.code) throw new Error(json.error || 'Transfer failed');
@@ -668,7 +612,7 @@ async function gatewaySend() {
     showGatewayCode(json.code);
     if (btn) { btn.textContent = 'Resend'; btn.disabled = false; }
   } catch(e) {
-    if (btn) { btn.disabled = false; btn.textContent = 'Begin with The Navigator →'; }
+    if (btn) { btn.disabled = false; btn.textContent = 'Begin with The Navigator \u2192'; }
     alert('Could not start transfer: ' + e.message + '\n\nPlease check your connection and try again.');
   }
 }
@@ -698,7 +642,7 @@ function gatewayStartCountdown() {
       var display = document.getElementById('gateway-code-display');
       if (display) display.classList.remove('visible');
       var btn = document.getElementById('gateway-btn');
-      if (btn) { btn.disabled = false; btn.textContent = 'Begin with The Navigator →'; }
+      if (btn) { btn.disabled = false; btn.textContent = 'Begin with The Navigator \u2192'; }
       gatewayState.activeCode = null;
     }
   }, 1000);
@@ -711,7 +655,7 @@ async function gatewayCancel() {
   var display = document.getElementById('gateway-code-display');
   if (display) display.classList.remove('visible');
   var btn = document.getElementById('gateway-btn');
-  if (btn) { btn.disabled = false; btn.textContent = 'Begin with The Navigator →'; }
+  if (btn) { btn.disabled = false; btn.textContent = 'Begin with The Navigator \u2192'; }
   if (code) {
     try { await fetch(BACKEND+'/api/sync/cancel', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({code:code}) }); } catch(e) {}
   }
@@ -721,13 +665,11 @@ window.gatewayCancel = gatewayCancel;
 function drawGatewayQR(code) {
   var img = document.getElementById('gateway-qr');
   if (!img) return;
-  // QR encodes a URL that opens Navigator with the sync code pre-filled in the hash
   var url = NAVIGATOR_URL + '#sync=' + code;
   img.src = 'https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=' + encodeURIComponent(url);
   img.onerror = function() { img.style.display = 'none'; };
 }
 
-// ── JSON Builders ─────────────────────────────────────────────────────────────
 function normalizePrfScore(raw) { return Math.min(100, Math.round((raw/12)*100)); }
 
 function buildNavigatorJSON() {
@@ -747,7 +689,7 @@ function buildNavigatorJSON() {
     version:'prf22-gateway-v1', includeInTwin:true,
     foundations:{care:normalizePrfScore(s.care||0), fairness:normalizePrfScore(s.fair||0), loyalty:normalizePrfScore(s.loyal||0), authority:normalizePrfScore(s.auth||0)},
     foundationsRanked:ranked,
-    reasoningStyle:{styleLabel:'Determined through scenario responses — see foundationsRanked', logicalIntuitiveRatio:60},
+    reasoningStyle:{styleLabel:'Determined through scenario responses \u2014 see foundationsRanked', logicalIntuitiveRatio:60},
     atcf:{identityStability:65, metacognitiveFlexibility:70, stressResilience:60},
     trust:{trustBaseline:58, institutionalTrust:50},
     orientation:{selfExpressionSurvival:60},
@@ -763,7 +705,7 @@ function buildNavigatorJSON() {
     philosophicalProfile: state.profile,
     assemblyHistory: state.asmAnswers,
     prfScoresRaw: s,
-    generatedBy:'EBB PRF-22 Gateway — Saint Petersburg College'
+    generatedBy:'EBB PRF-22 Gateway \u2014 Saint Petersburg College'
   };
 }
 
@@ -779,16 +721,80 @@ function downloadJSON(obj, filename) {
   document.body.appendChild(a); a.click(); document.body.removeChild(a);
   setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
 }
+
 function downloadNavigatorJSON(){ downloadJSON(buildNavigatorJSON(),'PRF22_Navigator_'+new Date().toISOString().slice(0,10)+'.json'); }
 function downloadExaminedJSON(){ downloadJSON(buildExaminedJSON(),'PRF22_Examined_'+new Date().toISOString().slice(0,10)+'.json'); }
+
 function downloadProfileTXT(){
   var s = state.prfScores, p = state.primary;
-  var text = 'PRF-22 PHILOSOPHICAL PROFILE\nEthics Beyond Boundaries · Saint Petersburg College\n'+'='.repeat(50)+'\n\nPrimary foundation: '+(PRF_NAMES[p]||'Mixed')+'\nGenerated: '+new Date().toLocaleString()+'\n\nFOUNDATION SCORES\n'+PRF_KEYS.map(function(k){ return PRF_NAMES[k]+': '+(s[k]||0)+' pts'; }).join('\n')+'\n\n'+'='.repeat(50)+'\n\n'+(state.profile||'No profile generated yet.');
+  var text = 'PRF-22 PHILOSOPHICAL PROFILE\nEthics Beyond Boundaries \u00B7 Saint Petersburg College\n'+'='.repeat(50)+'\n\nPrimary foundation: '+(PRF_NAMES[p]||'Mixed')+'\nGenerated: '+new Date().toLocaleString()+'\n\nFOUNDATION SCORES\n'+PRF_KEYS.map(function(k){ return PRF_NAMES[k]+': '+(s[k]||0)+' pts'; }).join('\n')+'\n\n'+'='.repeat(50)+'\n\n'+(state.profile||'No profile generated yet.');
   var blob = new Blob([text],{type:'text/plain'});
   var url = URL.createObjectURL(blob);
   var a = document.createElement('a'); a.href=url; a.download='PRF22_Profile_'+new Date().toISOString().slice(0,10)+'.txt';
   document.body.appendChild(a); a.click(); document.body.removeChild(a);
   setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
+}
+
+// ── CHANGE 2 JS: Track 2 print/download function ─────────────────────────────
+function printMyAnswers() {
+  var s = state.prfScores, p = state.primary;
+  var scenarioText = PRF_Q.map(function(q, qi) {
+    var ai = state.prfAnswers[qi];
+    return 'Scenario '+(qi+1)+': '+q.q+'\nYour response: '+(ai!==undefined ? q.opts[ai] : '(not answered)');
+  }).join('\n\n');
+  var scoreText = PRF_KEYS.map(function(k){
+    return PRF_NAMES[k]+': '+(s[k]||0)+' pts'+(k===p?' \u2605 Primary':'');
+  }).join('\n');
+  var asmText = ASM_Q.map(function(q){
+    var ans = state.asmAnswers[q.n] || '(not answered)';
+    return 'Assembly History '+q.n+':\n'+q.q+'\n\nYour response:\n'+ans;
+  }).join('\n\n'+'\u2500'.repeat(40)+'\n\n');
+  var filled = ASM_Q.filter(function(q){ return (state.asmAnswers[q.n]||'').trim().length > 20; }).length;
+  var lines = [
+    'PRF-22 GATEWAY \u2014 MY ANSWERS (Track 2 / No AI)',
+    'Ethics Beyond Boundaries \u00B7 Saint Petersburg College',
+    '='.repeat(50),
+    '',
+    'PART 1 \u2014 MORAL FOUNDATIONS RESPONSES',
+    '\u2500'.repeat(40),
+    '',
+    scenarioText,
+    '',
+    'Foundation scores (provisional):',
+    scoreText,
+    '',
+    '='.repeat(50),
+    '',
+    'PART 2 \u2014 ASSEMBLY HISTORY RESPONSES ('+filled+' of 6 answered)',
+    '\u2500'.repeat(40),
+    '',
+    asmText,
+    '',
+    '='.repeat(50),
+    '',
+    'TRACK 2 ESSAY ASSIGNMENT',
+    '\u2500'.repeat(40),
+    '',
+    'Using your responses above as a starting point, write a personal',
+    'reflection essay of at least 300 words that:',
+    '',
+    '\u2022 Names your primary moral foundation and explains what it tells you',
+    '  about what you notice first in moral situations.',
+    '\u2022 Connects one Assembly History response to how your PRF was formed.',
+    '\u2022 Applies at least one concept from the chapter to your own life.',
+    '\u2022 Identifies one thing you want to examine further this semester.',
+    '',
+    'Submit your essay to Canvas. Keep this file for your own reference.',
+    '',
+    'Generated: '+new Date().toLocaleString()
+  ];
+  var blob = new Blob([lines.join('\n')],{type:'text/plain'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href=url;
+  a.download='PRF22_MyAnswers_Track2_'+new Date().toISOString().slice(0,10)+'.txt';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(function(){ URL.revokeObjectURL(url); },1000);
 }
 
 function startOver() {
@@ -799,7 +805,6 @@ function startOver() {
   buildPRF(); buildEssays(); goTo('section-intro');
 }
 
-// ── Privacy Modal ─────────────────────────────────────────────────────────────
 function openPrivacyModal(){ document.getElementById('privacy-modal').classList.add('open'); document.body.style.overflow='hidden'; }
 function closePrivacyModal(){ document.getElementById('privacy-modal').classList.remove('open'); document.body.style.overflow=''; }
 function closePrivacyIfBackground(e){ if(e.target===document.getElementById('privacy-modal')) closePrivacyModal(); }
@@ -807,10 +812,8 @@ document.addEventListener('keydown',function(e){ if(e.key==='Escape') closePriva
 window.openPrivacyModal = openPrivacyModal;
 window.closePrivacyModal = closePrivacyModal;
 
-// ── Utilities ─────────────────────────────────────────────────────────────────
 function esc(s){ return String(s||'').replace(/[&<>'"]/g,function(c){ return{'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#039;','"':'&quot;'}[c]; }); }
 
-// ── Init ──────────────────────────────────────────────────────────────────────
 buildPRF();
 buildEssays();
 goTo('section-intro');
